@@ -1,0 +1,7 @@
+E:\thuctap\test\test.DAL\bin\Debug\test.DAL.dll
+E:\thuctap\test\test.DAL\bin\Debug\test.DAL.pdb
+E:\thuctap\test\test.DAL\bin\Debug\SubSonic.dll
+E:\thuctap\test\test.DAL\obj\Debug\test.DAL.csproj.CoreCompileInputs.cache
+E:\thuctap\test\test.DAL\obj\Debug\test.DAL.csproj.CopyComplete
+E:\thuctap\test\test.DAL\obj\Debug\test.DAL.dll
+E:\thuctap\test\test.DAL\obj\Debug\test.DAL.pdb

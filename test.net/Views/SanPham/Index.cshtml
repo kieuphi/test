@@ -1,0 +1,108 @@
+﻿
+@model IEnumerable<CuaHangDAL.SanPham>
+
+@using (Html.BeginForm("Seacrh", "SanPham", FormMethod.Post))
+{
+   @Html.DropDownList("danhmuc", null, new { @class = "" })
+
+    @Html.TextBox("TenSp", null, new { @class="txtten", @placeholder = " nhap ten sp tim kiem" })
+    @Html.TextBox("GiaNhap",null,new { @class="txtgia" , placeholder = " nhap gia sp tim kiem" })
+    <input type="submit" class="btn btn-default" id="submit" />
+}
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Masp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaNhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuongTon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DanHMuc.TenDM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaycapnhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNVchinhsua)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hinhanh)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Masp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DanHMuc.TenDM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hinhanh)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { @id = item.Masp }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { @id = item.Masp })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
+
+<script>
+    $('#submit').click(function () {
+      
+        if (ktso() == false) {
+            return false;
+        }
+    });
+    function ktso() {
+        var x = true;
+        $('.txtgia').each(function () {
+            var giatri = $(this).val();
+            if (isNaN(giatri) == true) {
+                x = false;
+                return x;
+            }
+          
+        })
+        return x;
+
+    }
+</script>
