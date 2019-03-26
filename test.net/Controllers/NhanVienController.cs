@@ -21,7 +21,8 @@ namespace test.net.Controllers
         {
             return View();
         }
-        [HttpPost]
+
+        [HttpPost] // luu thong tin nhan vien tao tai khoan nhan vien
         public ActionResult Create(NhanVien nv)
         {
             NhanVienMager.insert(nv);

@@ -50,7 +50,8 @@ namespace test.net.Controllers
            
             return View();
         }
-        [HttpPost]
+
+        [HttpPost] // luu tt khach hang, tao tai khoan kh
         public ActionResult Create(KhachHang item)
         {
             KhachHangMager.insertKhachhang(item);
