@@ -55,7 +55,7 @@ namespace test.net.Controllers
 
             ViewBag.mapn = item.MaPN;
             List<SanPham> lstsp = SanPhamMager.getAllSanPham();
-            ViewBag.sanpham = new SelectList("lstsp", "Masp", "TenSp");
+            ViewBag.sanpham = new SelectList(lstsp,"Masp","TenSp");
             return View();
         }
     }

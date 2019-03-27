@@ -1,0 +1,61 @@
+<html>
+<head>
+	<script type="text/javascript" src="./test.net/Scripts/jquery-3.3.1.min.js" ></script>
+  <link rel="stylesheet" href="./test.net/Content/bootstrap.min.css">
+  <link rel="stylesheet" href="./test.net/Content/bootstrap.min.css.map">
+</head>
+	<body>
+		
+<table class="table table-striped b-t b-light">
+  <thead >
+     <tr class="append"  style="display: none;" >
+      <td></td>
+      <td> <input type="text" class="txtten"></td>
+      <td> <input type="text" class=" txtsoluong"></td>
+      <td> <input type="text" class="txtdongoa"></td>    
+      <td><input type="button" id="btnxoa" class=" btn btn-danger" value="-"></td> 
+    </tr>
+     <tr data-id="-1" >  
+     <th> stt</th> 
+      <th>ten sp</th>
+      <th>so luong</th>
+      <th> don gia nhap</th>
+      <th> xoa</th>
+    </tr>
+
+ </thead>
+<tbody>
+
+  
+</tbody>
+</table>
+<div>
+  <input type="button" class="btn btn-success" value="+" id="btnthem">
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+        var dtaId = $('table table-striped b-t b-light, thead').find('tr:last').attr('data-id');
+     var id = parseInt(dtaId) + 1;
+    //them
+    $('#btnthem').click(function () {
+      var htmladd = $('.append').html();
+      var htmlappen = "<tr class=\"append\" data-id=\""+id+"\">" +htmladd +" </tr>";
+      alert(htmlappen);
+ 
+
+      $('tbody').append(htmlappen);
+    });
+  })
+
+
+</script>
+
+
+  
+
+
+
+	</body>
+</html> 
