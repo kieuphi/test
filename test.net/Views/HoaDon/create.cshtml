@@ -1,0 +1,163 @@
+﻿@using CuaHangDAL
+
+@{
+    NhanVien nv = (ViewBag.nhanvien) as NhanVien;
+   List<KhachHang> kh = (ViewBag.khachhang) as List< KhachHang>;
+}
+
+@using (Html.BeginForm())
+{
+<div class="col-md-12">
+    <h1 style="text-align:center"> thong tin hoa don </h1>
+    <div class="col-md-6">
+        <h3> khach hang</h3>
+        <select class="form-control" name="MaKH">
+            @foreach ( var x in kh)
+            {
+                <option value="@x.MaKh" > @x.TenKH</option>
+            }
+
+        </select>
+        @*@Html.DropDownList("khachhang", null, new { @class = "form-control" })*@
+    </div>
+    <div class="col-md-6">
+        <h3> ngay mua hang</h3>
+        <input type="date" name="NgayDat" />
+    </div>
+    @Html.Hidden("MaNV", nv.MaNV)
+
+</div>
+    <table class="table table-striped b-t b-light">
+        <thead>
+            <tr class="append" style="display: none;">
+                <td class="stt"></td>
+                <td>@Html.DropDownList("sanpham", null, new { @class = "txtten" })</td>
+                <td> <input type="text" class="txtsoluong"></td>
+                <td>
+                    <input type="text" class="txtdongoa">
+                    <input type="button" class="btn-default" value="0" onclick="lamgi()" />
+                    @*@Ajax.ActionLink("price","price","MuaHang", null, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace }, new { @class= "ajaxloading" } )*@
+                </td>
+                <td><input type="button" id="btnxoa" class=" btn btn-danger" value="-"></td>
+            </tr>
+            <tr data-id="-1">
+                <th> stt</th>
+                <th>ten sp</th>
+                <th>so luong</th>
+                <th> don gia nhap</th>
+                <th> xoa</th>
+            </tr>
+
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div>
+        <input type="button" class="btn btn-success" value="+" id="btnthem">
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //them
+        $('#btnthem').click(function () {
+            var dtaId = $('.table table-striped b-t b-light ,table').find('tr:last').attr('data-id');
+            var id = parseInt(dtaId) + 1;
+            var htmladd = $('.append').html();
+            var htmlappen = "<tr class=\"append\" data-id=\"" + id + "\">" + htmladd + " </tr>";
+            $('tbody').append(htmlappen);
+            loadName(); // load name data id
+        });
+
+        $('body').on("click", "#btnxoa", function () {
+            $(this).closest('.append').remove();
+            capnhapid();
+        })
+
+        // cap nhap  name  data id sau khi remove
+        function capnhapid() {
+            var idcuoi = $('.table table-striped b-t b-light, thead').find('tr:last').attr('data-id');
+            var i = parseInt(idcuoi);
+
+            $('.append').each(function () {
+                $(this).attr('data-id', i);
+                $(this).find('.stt').text(i);
+
+                var masp = "[" + i + "].Masp";
+                var soluong = "[" + i + "].SoLuong";
+                var Gia = "[" + i + "].DonGiaNhap";
+                //var id = i + "idtext";
+                $(this).find('.txtten').attr("name", masp);
+                $(this).find('.txtsoluong').attr("name", soluong);
+                $(this).find('.txtdongoa').attr({
+                    "name": Gia,
+                    //"id": id
+
+                });
+
+                //$(this).find('.ajaxloading').attr("data-ajax-update", id);
+
+                i++
+            });
+        }
+        function loadName() {
+            $('.append').each(function () {
+                var i = $(this).attr('data-id');
+                var masp = "[" + i + "].Masp";
+                var soluong = "[" + i + "].SoLuong";
+                var Gia = "[" + i + "].GiaNhap";
+                //var id = i + "idtext";
+
+                $(this).find('.stt').text(i);
+                $(this).find('.txtten').attr("name", masp);
+                $(this).find('.txtsoluong').attr("name", soluong);
+
+                $(this).find('.txtdongoa').attr({
+                    "name": Gia,
+                    //"id": id
+                });
+
+                //$(this).find('.ajaxloading').attr({
+                //    "data-ajax-update": id,
+                //    "href": "create/muahang/" +id
+                //});
+
+
+            });
+        }
+
+        //$('body').on("change", ".txtten", function () {
+        //    var x = $(this).val();
+        //      })
+        //function lamgi() {
+        //    var url = '/MuaHang/price/';
+        //    var x = $(this).closest('.txtten').attr("Masp");
+        //    $.ajax({
+        //        type: "POST",
+        //        url: url,
+        //        data: { id: '1234' }, //if there are any parameters
+        //        dataType: "text", //or some other type
+        //        success: function (data) {
+
+        //            // or something in that area, maybe with the 'data'
+        //        },
+        //        error: function () {
+        //            //some derp
+        //        }
+        //    });
+
+    });
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

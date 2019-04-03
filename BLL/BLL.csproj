@@ -47,6 +47,7 @@
     <Compile Include="CTHDMager.cs" />
     <Compile Include="CtPnMager.cs" />
     <Compile Include="DanhMucMager.cs" />
+    <Compile Include="Encryptormd5.cs" />
     <Compile Include="HoaDonManger.cs" />
     <Compile Include="KhachHangMager.cs" />
     <Compile Include="NhaCungCapMager.cs" />

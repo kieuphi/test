@@ -427,17 +427,6 @@ namespace CuaHangDAL
 		
 		
 		/// <summary>
-		/// Returns a TaiKhoan ActiveRecord object related to this KhachHang
-		/// 
-		/// </summary>
-		public CuaHangDAL.TaiKhoan TaiKhoan
-		{
-			get { return CuaHangDAL.TaiKhoan.FetchByID(this.MaTk); }
-			set { SetColumnValue("MaTk", value.MaTK); }
-		}
-		
-		
-		/// <summary>
 		/// Returns a LoaiThanhVien ActiveRecord object related to this KhachHang
 		/// 
 		/// </summary>
@@ -445,6 +434,17 @@ namespace CuaHangDAL
 		{
 			get { return CuaHangDAL.LoaiThanhVien.FetchByID(this.MaTV); }
 			set { SetColumnValue("MaTV", value.MaLoaitv); }
+		}
+		
+		
+		/// <summary>
+		/// Returns a TaiKhoan ActiveRecord object related to this KhachHang
+		/// 
+		/// </summary>
+		public CuaHangDAL.TaiKhoan TaiKhoan
+		{
+			get { return CuaHangDAL.TaiKhoan.FetchByID(this.MaTk); }
+			set { SetColumnValue("MaTk", value.MaTK); }
 		}
 		
 		

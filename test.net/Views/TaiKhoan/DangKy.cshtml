@@ -1,51 +1,50 @@
 ﻿@model CuaHangDAL.TaiKhoan
-
-@using (Html.BeginForm("DangKy","TaiKhoan",FormMethod.Post)) 
+@using (Html.BeginForm("DangKy", "TaiKhoan", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4> xinh chao @ViewBag.TenNV</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <h4> xinh chao @ViewBag.TenNV</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.TenTK, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TenTK, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenTK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenTK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @id= "MatKhau" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Loaitk, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="Loaitk" value="nhan vien" readonly />
+                @Html.ValidationMessageFor(model => model.Loaitk, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="hidden" name="id" value=@ViewBag.MaNV />
+
+        @Html.Hidden("Status", "trong")
+
+
+        @Html.Hidden("Ngaycapnhap", DateTime.Now)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" id="nutdangki" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Loaitk, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="text" name="Loaitk" value="nhan vien" readonly />
-            @Html.ValidationMessageFor(model => model.Loaitk, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <input type="hidden" name="id" value=@ViewBag.MaNV />
-
-    @Html.Hidden("Status", "trong")
-    
-
-    @Html.Hidden("Ngaycapnhap", DateTime.Now)
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>

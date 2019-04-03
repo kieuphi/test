@@ -31,7 +31,7 @@ namespace test.net.Controllers
         [HttpPost] //  sua sp co luu ten nhan vien sua
         public ActionResult Edit(SanPham sp)
         {
-            TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
             int id = tk.MaTK;
             NhanVien nv = NhanVienMager.GetbyTK(id);
             sp.MaNVchinhsua = nv.MaNV;
@@ -102,6 +102,13 @@ namespace test.net.Controllers
             List<DanHMuc> dm = DanhMucMager.getAllDanhMuc();
             ViewBag.danhmuc = new SelectList(dm, "MaDM", "TenDM");
             return View();
+        }
+        [HttpPost]
+        public ActionResult Create(SanPham item)
+        {
+            SanPham sp = SanPhamMager.insertSanPham(item);
+            return View(sp);
+
         }
     }
 }

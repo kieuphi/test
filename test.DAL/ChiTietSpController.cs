@@ -82,9 +82,10 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public ChiTietSp Insert(ChiTietSp item)
 	    {
-            item.Save(UserName);
+	    
+		    item.Save(UserName);
             return item;
-        }
+	    }
     	
 	    /// <summary>
 	    /// Updates a record, can be used with the Object Data Source
@@ -104,6 +105,7 @@ namespace CuaHangDAL
 				
 	        item.Save(UserName);
             return item;
-	    }
+
+        }
     }
 }

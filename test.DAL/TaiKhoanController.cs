@@ -82,7 +82,7 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public TaiKhoan Insert(TaiKhoan item)
 	    {
-            
+		  
 		    item.Save(UserName);
             return item;
 	    }

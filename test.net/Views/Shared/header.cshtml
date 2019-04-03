@@ -92,11 +92,11 @@
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
             </ul>
-            @if (Session["taikhoan"] != null)
+            @if (Session["USER_SESSION"] != null)
             {
 
 
-                TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+                TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
                 <ul class="header_left">
                     <li style="color:wheat">Ten Tk: @tk.TenTK</li>
                     <li style="color:wheat">Loai tk :@tk.Loaitk</li>

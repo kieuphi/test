@@ -4,13 +4,20 @@ using System.Collections.Generic;
 
 namespace BLL
 {
-    internal class CtPnMager
+    public class CtPnMager
     {
         public static Ctpn insert(Ctpn item)
         {
             return new CtpnController().Insert(item);
         }
-
+        public static IEnumerable<Ctpn> insertall (IEnumerable<Ctpn> lst)
+        {
+            foreach( var item in lst)
+            {
+                CtPnMager.insert(item);
+            }
+            return lst;
+        }
         public static Ctpn uppdate(Ctpn item)
         {
             return new CtpnController().Update(item);

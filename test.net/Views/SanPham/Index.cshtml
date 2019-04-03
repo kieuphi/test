@@ -40,46 +40,52 @@
         <th>
             @Html.DisplayNameFor(model => model.Hinhanh)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGiaBan)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+    <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Masp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenSp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GiaNhap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoLuongTon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DanHMuc.TenDM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ngaycapnhap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hinhanh)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { @id = item.Masp }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { @id = item.Masp })
-            </td>
-        </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Masp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaNhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanHMuc.TenDM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaycapnhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hinhanh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGiaBan)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { @id = item.Masp }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { @id = item.Masp })
+        </td>
+    </tr>
     }
 
 </table>

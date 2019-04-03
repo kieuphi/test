@@ -1,0 +1,2 @@
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\obj\Release\BLL.csprojAssemblyReference.cache
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache

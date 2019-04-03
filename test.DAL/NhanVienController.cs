@@ -82,9 +82,6 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public NhanVien Insert(NhanVien item)
 	    {
-		    
-        
-	    
 		    item.Save(UserName);
             return item;
 	    }

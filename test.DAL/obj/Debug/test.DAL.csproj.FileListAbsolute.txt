@@ -5,3 +5,9 @@ E:\thuctap\test\test.DAL\obj\Debug\test.DAL.csproj.CoreCompileInputs.cache
 E:\thuctap\test\test.DAL\obj\Debug\test.DAL.csproj.CopyComplete
 E:\thuctap\test\test.DAL\obj\Debug\test.DAL.dll
 E:\thuctap\test\test.DAL\obj\Debug\test.DAL.pdb
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\bin\Debug\test.DAL.dll
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\bin\Debug\test.DAL.pdb
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.csproj.CopyComplete
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.dll
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.pdb

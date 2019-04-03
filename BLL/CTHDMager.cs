@@ -10,7 +10,14 @@ namespace BLL
         {
             return new CthdController().Insert(item);
         }
-
+        public static IEnumerable<Cthd> insertall(IEnumerable<Cthd> lst)
+        {
+            foreach (var item in lst)
+            {
+                CTHDMager.insert(item);
+            }
+            return lst;
+        }
         public static Cthd uppdate(Cthd item)
         {
             return new CthdController().Update(item);

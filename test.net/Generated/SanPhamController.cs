@@ -80,7 +80,7 @@ namespace CuaHangDAL
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public void Insert(string TenSp,decimal? GiaNhap,int? SoLuongTon,int? MaDm,DateTime? Ngaycapnhap,int? MaNVchinhsua,string Status,string Hinhanh)
+	    public void Insert(string TenSp,decimal? GiaNhap,int? SoLuongTon,int? MaDm,DateTime? Ngaycapnhap,int? MaNVchinhsua,string Status,string Hinhanh,decimal? DonGiaBan)
 	    {
 		    SanPham item = new SanPham();
 		    
@@ -100,6 +100,8 @@ namespace CuaHangDAL
             
             item.Hinhanh = Hinhanh;
             
+            item.DonGiaBan = DonGiaBan;
+            
 	    
 		    item.Save(UserName);
 	    }
@@ -108,7 +110,7 @@ namespace CuaHangDAL
 	    /// Updates a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Update, true)]
-	    public void Update(int Masp,string TenSp,decimal? GiaNhap,int? SoLuongTon,int? MaDm,DateTime? Ngaycapnhap,int? MaNVchinhsua,string Status,string Hinhanh)
+	    public void Update(int Masp,string TenSp,decimal? GiaNhap,int? SoLuongTon,int? MaDm,DateTime? Ngaycapnhap,int? MaNVchinhsua,string Status,string Hinhanh,decimal? DonGiaBan)
 	    {
 		    SanPham item = new SanPham();
 	        item.MarkOld();
@@ -131,6 +133,8 @@ namespace CuaHangDAL
 			item.Status = Status;
 				
 			item.Hinhanh = Hinhanh;
+				
+			item.DonGiaBan = DonGiaBan;
 				
 	        item.Save(UserName);
 	    }

@@ -16,7 +16,7 @@ namespace BLL
             return new KhachHangController().Update(kh);
         }
 
-        public static KhachHang GetKhachHangByID(string id)
+        public static KhachHang GetKhachHangByID(int? id)
         {
             return new Select().From(KhachHang.Schema.TableName).Where(KhachHang.Columns.MaKh).IsEqualTo(id)
                 .ExecuteSingle<KhachHang>();
@@ -27,7 +27,7 @@ namespace BLL
             return new Select().From(KhachHang.Schema.TableName).ExecuteTypedList<KhachHang>();
         }
 
-        public static bool DeleteKhachHang(string id)
+        public static bool DeleteKhachHang(int? id)
         {
             return new KhachHangController().Destroy(id);
         }

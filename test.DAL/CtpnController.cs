@@ -81,8 +81,8 @@ namespace CuaHangDAL
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public Ctpn Insert(Ctpn item)
-	    {
-		
+        {  
+	        
 		    item.Save(UserName);
             return item;
 	    }

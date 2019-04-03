@@ -27,7 +27,7 @@ namespace BLL
                 .IsNotEqualTo("xoa").ExecuteTypedList<SanPham>();
         }
 
-        public static SanPham GetSanPhamByID(int id)
+        public static SanPham GetSanPhamByID(int? id)
         {
             return new Select().From(SanPham.Schema.TableName)
                 .Where(SanPham.Columns.Masp).IsEqualTo(id)
@@ -41,6 +41,18 @@ namespace BLL
                  .ExecuteSingle<SanPham>();
             sp.Status = "xoa";
             return new SanPhamController().Update(sp);
+        }
+
+        public static SanPham tinhgiaban(int? id)
+        {
+            SanPham sp = new Select().From(SanPham.Schema.TableName)
+                 .Where(SanPham.Columns.Masp).IsEqualTo(id)
+                 .ExecuteSingle<SanPham>();
+            int slnv = (new Select().From(NhanVien.Schema.TableName) // tinh so luong nv
+                .Where(NhanVien.Columns.Status).IsNotEqualTo("xoa")
+                .ExecuteTypedList<NhanVien>()).Count;
+            sp.DonGiaBan = (sp.GiaNhap * (decimal)0.1) + (sp.GiaNhap * (decimal)0.3) + (sp.GiaNhap * slnv * (decimal)0.012);
+            return SanPhamMager.uppdateSanPham(sp);
         }
 
         public static List<SanPham> GetSPbyDM(int? id)
@@ -66,6 +78,22 @@ namespace BLL
                 .IsNotEqualTo("xoa").ExecuteTypedList<SanPham>();
             return sp;
         }
-      
+
+        public static void capnhapgia(int? id)
+        {
+            SPs.TinhgiatatcaSP(id);
+    ///        SanPham sp = new Select().fro
+
+
+        }
+
+        public static decimal? pirceSP(int? id)
+        {
+            SanPham sp = new Select().From(SanPham.Schema.TableName)
+                 .Where(SanPham.Columns.Masp).IsEqualTo(id)
+                 .ExecuteSingle<SanPham>();
+            return sp.DonGiaBan;
+        }
+        
     }
 }

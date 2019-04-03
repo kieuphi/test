@@ -82,7 +82,8 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public Pn Insert(Pn item)
 	    {
-
+		 
+	    
 		    item.Save(UserName);
             return item;
 	    }
@@ -108,7 +109,7 @@ namespace CuaHangDAL
 			item.Status = item2.Status;
 				
 	        item.Save(UserName);
-            return item;
+            return item2;
 	    }
     }
 }

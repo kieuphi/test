@@ -45,18 +45,38 @@ namespace test.net.Controllers
    
         }
         [HttpPost]
-        public ActionResult Create( Pn item)
+        public ActionResult Create(Pn item)
         {
             PhieuNhapMager.insert(item);
             return RedirectToAction("CreateCtPn",item);
         }
         public ActionResult CreateCtPn(Pn item)
         {
-
+            ViewBag.tennv = item.NhanVien.TenNv;
             ViewBag.mapn = item.MaPN;
             List<SanPham> lstsp = SanPhamMager.getAllSanPham();
             ViewBag.sanpham = new SelectList(lstsp,"Masp","TenSp");
             return View();
+        }
+        [HttpPost]
+        public ActionResult CreateCtPn(Pn item, IEnumerable<Ctpn> lst)
+        {
+            SanPham sp;
+            foreach( var x in lst)
+            { // cap nhap so luong
+                sp = SanPhamMager.GetSanPhamByID(x.MaSp);
+                sp.SoLuongTon = sp.SoLuongTon + x.SoLuong;
+                SanPhamMager.uppdateSanPham(sp);
+                x.MaPN = item.MaPN;
+                
+            }
+            CtPnMager.insertall(lst);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Details (int? id)
+        {
+            List<Ctpn> lst = CtPnMager.GetItembyMapn(id);
+            return View(lst);
         }
     }
 }

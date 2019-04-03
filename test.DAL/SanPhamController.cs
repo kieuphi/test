@@ -80,12 +80,13 @@ namespace CuaHangDAL
 	    /// Inserts a record, can be used with the Object Data Source
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
-	    public SanPham Insert(SanPham item)
+	    public SanPham Insert(SanPham item )
 	    {
-
-	        
+		 
+	    
 		    item.Save(UserName);
             return item;
+
 	    }
     	
 	    /// <summary>
@@ -94,12 +95,11 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Update, true)]
 	    public SanPham Update(SanPham item2)
 	    {
-            
 		    SanPham item = new SanPham();
 	        item.MarkOld();
 	        item.IsLoaded = true;
 		    
-			item.Masp = item2. Masp;
+			item.Masp = item2.Masp;
 				
 			item.TenSp = item2.TenSp;
 				
@@ -117,10 +117,10 @@ namespace CuaHangDAL
 				
 			item.Hinhanh = item2.Hinhanh;
 				
+			item.DonGiaBan = item2.DonGiaBan;
+				
 	        item.Save(UserName);
             return item;
 	    }
-
-
     }
 }

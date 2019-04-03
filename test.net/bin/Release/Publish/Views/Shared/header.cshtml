@@ -1,0 +1,139 @@
+﻿@using CuaHangDAL;
+
+<style>
+    .header_left {
+        float: right;
+        margin-top: 8px;
+    }
+
+    .frmdangnhap {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+    }
+
+        .frmdangnhap form {
+            position: relative;
+            background-color: yellow;
+            margin: 102px 443px;
+            width: 543px;
+            height: 332px;
+            z-index: 6;
+        }
+
+            .frmdangnhap form input {
+                width: 100%;
+                padding: 13px 5px 13px 40px;
+                display: block;
+                border: 1px solid #EDEDED;
+                border-radius: 4px;
+                transition: 0.2s ease-out;
+                color: #000;
+                box-sizing: border-box;
+                font-size: 14px;
+                outline: none;
+                letter-spacing: 1px;
+                margin: 1px 96px 18px 123px;
+            }
+
+        .frmdangnhap #btnlogin {
+            font-size: 20px;
+            width: 88px;
+            height: 56px;
+            display: block;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .frmdangnhap #btnthoat {
+            font-size: 20px;
+            width: 88px;
+            height: 56px;
+            display: block;
+            text-align: center;
+            padding: 10px;
+        }
+    .navbar-nav > li > a {
+   
+        padding: 5px 19px 7px 19px;
+    }
+</style>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#btndangnhap').click(function () {
+
+                $('.frmdangnhap').slideDown();
+            })
+            $('#btnthoat').click(function () {
+
+                $('.frmdangnhap').hide();
+            })
+        })
+
+</script>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+            </ul>
+            @if (Session["taikhoan"] != null)
+            {
+
+
+                TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+                <ul class="header_left">
+                    <li style="color:wheat">Ten Tk: @tk.TenTK</li>
+                    <li style="color:wheat">Loai tk :@tk.Loaitk</li>
+                    <li style="color:wheat">@Html.ActionLink("Logout", "Logout", "TaiKhoan")</li>
+                </ul>
+
+            }
+            else
+            {
+                <ul class="nav navbar-nav header_left">
+                    <li><input type="button" value="dang nhap" class="btn btn-success" id="btndangnhap" /></li>
+                    <li> <a href="/KhachHang/Create" class="btn btn-default"  type="button">create</a></li>
+                </ul>
+            }
+
+
+        </div>
+
+        <div class="navbar-collapse collapse">
+
+        </div>
+    </div>
+</div>
+
+<div class="frmdangnhap">
+    @using (Html.BeginForm("Login", "TaiKhoan", FormMethod.Post))
+    {
+        <h2 style="text-align:center"> login here</h2>
+        <input type="text" name="TenTk" value="" placeholder="Ten tk" />
+        <input type="password" name="MatKhau" value="" placeholder="Mat Khau" />
+        <ul class="nav navbar-nav ">
+            <li><input type="submit" value="OK" id="btnlogin" /></li>
+            <li><input type="button" value="X" id="btnthoat" /></li>
+
+        </ul>
+
+
+
+    }
+</div>

@@ -19,8 +19,7 @@ namespace test.net.Controllers
        [HttpGet]
         public ActionResult Edit(int id)
         {
-            string makh = id.ToString();
-           KhachHang kh = KhachHangMager.GetKhachHangByID(makh);
+           KhachHang kh = KhachHangMager.GetKhachHangByID(id);
             return View(kh);
         }
         [HttpPost]
@@ -31,17 +30,16 @@ namespace test.net.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            string makh = id.ToString();
-            KhachHang kh = KhachHangMager.GetKhachHangByID(makh);
+            KhachHang kh = KhachHangMager.GetKhachHangByID(id);
             return View(kh);
         }
         [HttpPost]
         public ActionResult Delete (int id ,FormCollection f)
         {
             
-            KhachHangMager.DeleteKhachHang(id.ToString());
+            KhachHangMager.DeleteKhachHang(id);
             return RedirectToAction("Index");
         }
         [HttpGet]

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CuaHangDAL.Ctpn>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.MaCTPn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaPN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaSp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGiaNhap)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.MaCTPn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGiaNhap)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,2 @@
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Release\test.DAL.csprojAssemblyReference.cache
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Release\test.DAL.csproj.CoreCompileInputs.cache

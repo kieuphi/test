@@ -82,9 +82,10 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public Hd Insert(Hd item)
 	    {
-		
+	
+	    
 		    item.Save(UserName);
-         return item;
+            return item;
 	    }
     	
 	    /// <summary>

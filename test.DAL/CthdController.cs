@@ -82,7 +82,8 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public Cthd Insert(Cthd item)
 	    {
-	 
+		  
+	    
 		    item.Save(UserName);
             return item;
 	    }

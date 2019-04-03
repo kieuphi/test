@@ -82,7 +82,7 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public DanHMuc Insert(DanHMuc item)
 	    {
-           
+	
 		    item.Save(UserName);
             return item;
 	    }

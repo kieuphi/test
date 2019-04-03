@@ -81,7 +81,8 @@ namespace CuaHangDAL
 	    /// </summary>
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public NhaCungCap Insert(NhaCungCap item)
-	    {    
+	    {
+		   
 		    item.Save(UserName);
             return item;
 	    }

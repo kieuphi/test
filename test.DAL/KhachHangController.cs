@@ -82,7 +82,9 @@ namespace CuaHangDAL
         [DataObjectMethod(DataObjectMethodType.Insert, true)]
 	    public KhachHang Insert(KhachHang item)
 	    {
-		     
+		    
+            
+	    
 		    item.Save(UserName);
             return item;
 	    }
@@ -124,7 +126,5 @@ namespace CuaHangDAL
 	        item.Save(UserName);
             return item;
 	    }
-     
     }
 }
-    

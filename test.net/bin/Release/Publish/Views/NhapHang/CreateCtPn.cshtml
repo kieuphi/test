@@ -1,0 +1,115 @@
+﻿@model CuaHangDAL.Ctpn
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Ctpn</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <table class="table table-striped b-t b-light">
+            <thead>
+                <tr class="append" style="display: none;">
+                    <td class="stt"></td>
+                    <td>   @Html.DropDownList("sanpham", null, new { @class = "txtten" })</td>
+
+                    <td> <input type="text" class="txtsoluong"></td>
+                    <td> <input type="text" class="txtdongoa"></td>
+                    <td><input type="button" id="btnxoa" class=" btn btn-danger" value="-"></td>
+                </tr>
+                <tr data-id="-1">
+                    <th> stt</th>
+                    <th>ten sp</th>
+                    <th>so luong</th>
+                    <th> don gia nhap</th>
+                    <th> xoa</th>
+                </tr>
+
+            </thead>
+            <tbody>
+
+
+            </tbody>
+        </table>
+        <div>
+            <input type="button" class="btn btn-success" value="+" id="btnthem">
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //them
+        $('#btnthem').click(function () {
+            var dtaId = $('.table table-striped b-t b-light ,table').find('tr:last').attr('data-id');
+            var id = parseInt(dtaId) + 1;
+            var htmladd = $('.append').html();
+            var htmlappen = "<tr class=\"append\" data-id=\"" + id + "\">" + htmladd + " </tr>";
+            $('tbody').append(htmlappen);
+            loadName(); // load name data id
+        });
+        function loadName() {
+            $('.append').each(function () {
+                var i = $(this).attr('data-id');
+                var masp = "[" + i + "].Masp";
+                var soluong = "[" + i + "].SoLuong";
+                var Gia = "[" + i + "].GiaNhap";
+                $(this).find('.stt').text(i);
+                $(this).find('.txtten').attr("name", masp);
+                $(this).find('.txtsoluong').attr("name", soluong);
+                $(this).find('.txtdongoa').attr("name", Gia);
+
+            });
+        }
+        $('body').on("click", "#btnxoa", function () {
+            $(this).closest('.append').remove();
+            capnhapid();
+        })
+
+        // cap nhap  name  data id sau khi remove
+        function capnhapid() {
+            var idcuoi = $('.table table-striped b-t b-light, thead').find('tr:last').attr('data-id');
+            var i = parseInt(idcuoi);
+
+            $('.append').each(function () {
+                $(this).attr('data-id', i);
+                $(this).find('.stt').text(i);
+
+                var masp = "[" + i + "].Masp";
+                var soluong = "[" + i + "].SoLuong";
+                var Gia = "[" + i + "].GiaNhap";
+                $(this).find('.txtten').attr("name", masp);
+                $(this).find('.txtsoluong').attr("name", soluong);
+                $(this).find('.txtdongoa').attr("name", Gia);
+
+                i++
+            });
+        }
+    })
+
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CuaHangDAL.Pn>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.MaPN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayNhap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNCC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaNV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.MaPN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayNhap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

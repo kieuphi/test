@@ -16,7 +16,7 @@
     <AssemblyName>test.net</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -139,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\constains.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,7 +152,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\md5.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -196,10 +199,11 @@
     <Content Include="Views\NhapHang\Index.cshtml" />
     <Content Include="Views\NhapHang\Create.cshtml" />
     <Content Include="Views\NhapHang\CreateCtPn.cshtml" />
+    <Content Include="Views\NhapHang\Details.cshtml" />
+    <Content Include="Views\HoaDon\create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -243,7 +247,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51486</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51486/</IISUrl>
+          <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

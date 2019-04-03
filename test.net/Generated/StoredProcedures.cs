@@ -16,17 +16,13 @@ namespace CuaHangDAL{
     public partial class SPs{
         
         /// <summary>
-        /// Creates an object wrapper for the timkiem Procedure
+        /// Creates an object wrapper for the tinhgiatatcaSP Procedure
         /// </summary>
-        public static StoredProcedure Timkiem(string tensp, double? gianhap, int? madanhmuc)
+        public static StoredProcedure TinhgiatatcaSP(int? masp)
         {
-            SubSonic.StoredProcedure sp = new SubSonic.StoredProcedure("timkiem", DataService.GetInstance("AdventureWorks"), "dbo");
+            SubSonic.StoredProcedure sp = new SubSonic.StoredProcedure("tinhgiatatcaSP", DataService.GetInstance("AdventureWorks"), "dbo");
         	
-            sp.Command.AddParameter("@tensp", tensp, DbType.String, null, null);
-        	
-            sp.Command.AddParameter("@gianhap", gianhap, DbType.Double, null, 53);
-        	
-            sp.Command.AddParameter("@madanhmuc", madanhmuc, DbType.Int32, 0, 10);
+            sp.Command.AddParameter("@masp", masp, DbType.Int32, 0, 10);
         	
             return sp;
         }

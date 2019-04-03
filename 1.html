@@ -2,55 +2,87 @@
 <head>
 	<script type="text/javascript" src="./test.net/Scripts/jquery-3.3.1.min.js" ></script>
   <link rel="stylesheet" href="./test.net/Content/bootstrap.min.css">
-  <link rel="stylesheet" href="./test.net/Content/bootstrap.min.css.map">
 </head>
 	<body>
-		
-<table class="table table-striped b-t b-light">
-  <thead >
-     <tr class="append"  style="display: none;" >
-      <td></td>
-      <td> <input type="text" class="txtten"></td>
-      <td> <input type="text" class=" txtsoluong"></td>
-      <td> <input type="text" class="txtdongoa"></td>    
-      <td><input type="button" id="btnxoa" class=" btn btn-danger" value="-"></td> 
-    </tr>
-     <tr data-id="-1" >  
-     <th> stt</th> 
-      <th>ten sp</th>
-      <th>so luong</th>
-      <th> don gia nhap</th>
-      <th> xoa</th>
-    </tr>
+  		
+  <table class="table table-striped b-t b-light">
+    <thead >
+       <tr class="append"  style="display: none;" >
+        <td></td>
+        <td> <input type="text" class="txtten"></td>
+        <td> <input type="text" class="txtsoluong"></td>
+        <td> <input type="text" class="txtdongoa"></td>    
+        <td><input type="button" id="btnxoa" class=" btn btn-danger" value="-"></td> 
+      </tr>
+       <tr data-id="-1" >  
+       <th> stt</th> 
+        <th>ten sp</th>
+        <th>so luong</th>
+        <th> don gia nhap</th>
+        <th> xoa</th>
+      </tr>
 
- </thead>
-<tbody>
+   </thead>
+  <tbody>
 
-  
-</tbody>
-</table>
-<div>
-  <input type="button" class="btn btn-success" value="+" id="btnthem">
-</div>
-
-
-<script type="text/javascript">
-  $(document).ready(function () {
-        var dtaId = $('table table-striped b-t b-light, thead').find('tr:last').attr('data-id');
-     var id = parseInt(dtaId) + 1;
-    //them
-    $('#btnthem').click(function () {
-      var htmladd = $('.append').html();
-      var htmlappen = "<tr class=\"append\" data-id=\""+id+"\">" +htmladd +" </tr>";
-      alert(htmlappen);
- 
-
-      $('tbody').append(htmlappen);
-    });
-  })
+    
+  </tbody>
+  </table>
+  <div>
+    <input type="button" class="btn btn-success" value="+" id="btnthem">
+  </div>
 
 
-</script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      //them
+      $('#btnthem').click(function () {
+        var dtaId = $('.table table-striped b-t b-light ,table').find('tr:last').attr('data-id');
+       var id = parseInt(dtaId) + 1;
+        var htmladd = $('.append').html();
+        var htmlappen = "<tr class=\"append\" data-id=\""+id+"\">" +htmladd +" </tr>";
+        $('tbody').append(htmlappen);
+        loadName(); // load name data id
+      });
+      function loadName() {
+        $('.append').each(function () {
+          var i = $(this).attr('data-id');
+          var masp = "["+i+"].Masp"  ;
+          var soluong ="["+i+"].SoLuong";
+          var Gia = "["+i+"].GiaNhap";
+          $(this).find('.txtten').attr("name",masp);
+          $(this).find('.txtsoluong').attr("name",soluong);
+          $(this).find('.txtdongoa').attr("name",Gia);
+
+        });
+      }
+      $('body').on("click","#btnxoa",function () {
+        $(this).closest('.append').remove();
+        capnhapid();
+      })
+
+  // cap nhap  name  data id sau khi remove
+   function capnhapid () {
+          var idcuoi = $('.table table-striped b-t b-light, thead').find('tr:last').attr('data-id');
+          var i = parseInt(idcuoi);
+
+          $('.append').each(function () {
+            $(this).attr('data-id',i);
+          var masp = "["+i+"].Masp"  ;
+          var soluong ="["+i+"].SoLuong";
+          var Gia = "["+i+"].GiaNhap";
+          $(this).find('.txtten').attr("name",masp);
+          $(this).find('.txtsoluong').attr("name",soluong);
+          $(this).find('.txtdongoa').attr("name",Gia);
+
+          i++
+          });
+   }
+    })
+
+
+  </script>
 
 
   
