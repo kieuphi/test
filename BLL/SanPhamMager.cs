@@ -1,6 +1,7 @@
 ﻿using CuaHangDAL;
 using SubSonic;
 using System.Collections.Generic;
+using PagedList;
 
 namespace BLL
 {
@@ -71,7 +72,7 @@ namespace BLL
             return sp;
         }
 
-        public static List<SanPham> GetSpByGiaNhap(decimal gia)
+        public static List<SanPham> GetSpByGiaNhap(decimal? gia)
         {
             List<SanPham> sp = new Select().From(SanPham.Schema.TableName)
                 .Where(SanPham.Columns.GiaNhap).IsBetweenAnd(gia - 100, gia + 100).And(SanPham.Columns.Status)
@@ -79,12 +80,11 @@ namespace BLL
             return sp;
         }
 
-        public static void capnhapgia(int? id)
+        public static IEnumerable<SanPham> phantrang(int page , int pagesize)
         {
-            SPs.TinhgiatatcaSP(id);
-    ///        SanPham sp = new Select().fro
-
-
+            IEnumerable<SanPham> sp = new Select().From(SanPham.Schema.TableName).Where(SanPham.Columns.Status)
+             .IsNotEqualTo("xoa").OrderAsc(SanPham.Columns.Masp).ExecuteTypedList<SanPham>();
+           return sp.ToPagedList(page, pagesize);
         }
 
         public static decimal? pirceSP(int? id)
@@ -94,6 +94,6 @@ namespace BLL
                  .ExecuteSingle<SanPham>();
             return sp.DonGiaBan;
         }
-        
+   
     }
 }

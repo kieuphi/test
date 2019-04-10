@@ -118,6 +118,7 @@ namespace CuaHangDAL
 			item.Hinhanh = item2.Hinhanh;
 				
 			item.DonGiaBan = item2.DonGiaBan;
+            item.ThamSoN = item2.ThamSoN;
 				
 	        item.Save(UserName);
             return item;

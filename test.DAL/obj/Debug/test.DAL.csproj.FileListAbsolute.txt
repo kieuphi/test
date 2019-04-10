@@ -11,3 +11,4 @@ C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.csproj.CopyComplete
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.pdb
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.DAL\obj\Debug\test.DAL.csprojAssemblyReference.cache

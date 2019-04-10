@@ -1,20 +1,24 @@
 ﻿@model CuaHangDAL.KhachHang
+@{ ViewBag.Title = "khach hang";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
 
-@using (Html.BeginForm("Create", "KhachHang", FormMethod.Post)) 
+@using (Html.BeginForm("Create", "KhachHang", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>KhachHang</h4>
         <hr />
-     
+
         @*<div class="form-group">
-            @Html.LabelFor(model => model.MaKh, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.Hidden("MaKh")
-                @Html.ValidationMessageFor(model => model.MaKh, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.MaKh, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                   @Html.Hidden("MaKh")
+                    @Html.ValidationMessageFor(model => model.MaKh, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.TenKH, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -57,34 +61,34 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.Diemso, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Diemso, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Diemso, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-        @Html.Hidden("Diemso",0)
+                @Html.LabelFor(model => model.Diemso, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Diemso, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Diemso, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @Html.Hidden("Diemso", 0)
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.MaTV, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaTV, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaTV, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-        @Html.Hidden("MaTV",1)
+                @Html.LabelFor(model => model.MaTV, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaTV, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaTV, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        @Html.Hidden("MaTV", 1)
 
-        
+
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.Ngaycapnhap, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ngaycapnhap, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ngaycapnhap, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.Ngaycapnhap, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Ngaycapnhap, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ngaycapnhap, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
-        @Html.Hidden("Ngaycapnhap",DateTime.Now)
+        @Html.Hidden("Ngaycapnhap", DateTime.Now)
         <div class="form-group">
             @Html.LabelFor(model => model.MaNVchinhsua, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -97,7 +101,7 @@
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.Hidden("Status","trong")
+                @Html.Hidden("Status", "trong")
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -110,6 +114,45 @@
     </div>
 }
 
+<script>
+    $().ready(function () {
+
+    $('.main-grid form').validate({
+        onfocusout: false,
+        onkeyup: false,
+        onclick: false,
+
+        rules: {
+            "TenKH": {
+                required: true
+            },
+            "DiaChi": {
+                required: true,
+            },
+            "Sdt": {
+                required: true,
+                number: true,
+            },
+      
+        },
+        messages: {
+            "TenNv": {
+                required: "tên nhân viên chưa nhập "
+            },
+            "DiaChi": {
+                required: "địa chỉ  nhân viên chưa nhập",
+
+            },
+            "Sdt": {
+                required: "sdt nhân viên chưa nhập",
+                number: "sdt phải la số",
+            },
+      
+        }
+
+    })
+        })
+</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<CuaHangDAL.KhachHang>
-
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{ ViewBag.Title = "khach hang";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
 <h2>Index</h2>
@@ -12,7 +10,7 @@
 </p>
 <table class="table">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.MaKh)
         </th>
@@ -52,53 +50,54 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.MaKh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sdt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cmd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Diemso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaTk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ngaycapnhap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaNVchinhsua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {@id=item.MaKh }) |
-            @Html.ActionLink("Details", "Details", new { }) |
-            @Html.ActionLink("Delete", "Delete", new { @id = item.MaKh })
-        </td>
-    </tr>
-}
-    
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MaKh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cmd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diemso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { @id = item.MaKh }) |
+                @Html.ActionLink("Details", "Details", new { }) |
+                @Html.ActionLink("Delete", "Delete", new { @id = item.MaKh })
+            </td>
+        </tr>
+    }
+
 </table>
 
-@Html.ActionLink("Create","Create",null,new { @class = "btn btn-success" })
+@Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })

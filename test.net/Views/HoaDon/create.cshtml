@@ -1,32 +1,36 @@
-﻿@using CuaHangDAL
+﻿@using CuaHangDAL;
+
+@{ ViewBag.Title = "hoa don";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
 
 @{
     NhanVien nv = (ViewBag.nhanvien) as NhanVien;
-   List<KhachHang> kh = (ViewBag.khachhang) as List< KhachHang>;
+    List<KhachHang> kh = (ViewBag.khachhang) as List<KhachHang>;
 }
 
 @using (Html.BeginForm())
 {
-<div class="col-md-12">
-    <h1 style="text-align:center"> thong tin hoa don </h1>
-    <div class="col-md-6">
-        <h3> khach hang</h3>
-        <select class="form-control" name="MaKH">
-            @foreach ( var x in kh)
-            {
-                <option value="@x.MaKh" > @x.TenKH</option>
-            }
+    <div class="col-md-12">
+        <h1 style="text-align:center"> thong tin hoa don </h1>
+        <div class="col-md-6">
+            <h3> khach hang</h3>
+            <select class="form-control" name="MaKH">
+                @foreach (var x in kh)
+                {
+                    <option value="@x.MaKh"> @x.TenKH</option>
+                }
 
-        </select>
-        @*@Html.DropDownList("khachhang", null, new { @class = "form-control" })*@
+            </select>
+            @*@Html.DropDownList("khachhang", null, new { @class = "form-control" })*@
+        </div>
+        <div class="col-md-6">
+            <h3> ngay mua hang</h3>
+            <input type="date" name="NgayDat" />
+        </div>
+        @Html.Hidden("MaNV", nv.MaNV)
+        @Html.Hidden("Status", "trong")
     </div>
-    <div class="col-md-6">
-        <h3> ngay mua hang</h3>
-        <input type="date" name="NgayDat" />
-    </div>
-    @Html.Hidden("MaNV", nv.MaNV)
-
-</div>
     <table class="table table-striped b-t b-light">
         <thead>
             <tr class="append" style="display: none;">
@@ -158,6 +162,6 @@
     });
 
 </script>
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

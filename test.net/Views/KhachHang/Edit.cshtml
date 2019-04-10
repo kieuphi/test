@@ -1,9 +1,11 @@
 ﻿@model CuaHangDAL.KhachHang
-
-@using (Html.BeginForm("Edit","KhachHang",FormMethod.Post))
+@{ ViewBag.Title = "khach hang";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+@using (Html.BeginForm("Edit", "KhachHang", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>KhachHang</h4>
         <hr />

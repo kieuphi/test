@@ -1,16 +1,21 @@
 ﻿
 @model IEnumerable<CuaHangDAL.SanPham>
 
+@{   ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
 @using (Html.BeginForm("Seacrh", "SanPham", FormMethod.Post))
 {
    @Html.DropDownList("danhmuc", null, new { @class = "" })
 
     @Html.TextBox("TenSp", null, new { @class="txtten", @placeholder = " nhap ten sp tim kiem" })
     @Html.TextBox("GiaNhap",null,new { @class="txtgia" , placeholder = " nhap gia sp tim kiem" })
-    <input type="submit" class="btn btn-default" id="submit" />
+    <input type="submit" class="btn active hvr-icon-fade" id="submit" />
 }
 
-<table class="table">
+<table class="table"id="hangtonkho">
     <tr>
 
         <th>
@@ -90,7 +95,7 @@
 
 </table>
 @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
-
+@Ajax.ActionLink("kiem tra hang","kthang",new AjaxOptions { HttpMethod="POST",InsertionMode=InsertionMode.Replace,UpdateTargetId= "hangtonkho" })
 <script>
     $('#submit').click(function () {
       

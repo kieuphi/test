@@ -1,0 +1,78 @@
+﻿@using CuaHangDAL;
+@using PagedList.Mvc;
+@model  PagedList.IPagedList<CuaHangDAL.SanPham>
+@{ ViewBag.Title = "nhan vien";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/Morris.js"></script>
+<script src="~/Scripts/raphael-min.js"></script>
+<style>
+    .body-content {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 60px;
+    }
+</style>
+@*@{
+        List<SanPham> lst = ViewBag.sanpham as List<SanPham>;
+    }*@
+<h1 style="text-align:center"> Tham so N</h1>
+<h2> so luong tối đa hàng hóa có trong kho</h2>
+<div class="form-horizontal">
+
+    @foreach (var x in Model)
+    {
+        <div class="form-group">
+            <p class="control-label col-md-2"> ten san pham</p>
+            <div class="col-md-4">
+                @*@Html.DisplayFor(modelItem => modelItem.TenSp, new { htmlAttributes = new { @class = "form-control" } })*@
+                <p class="form-control">@x.TenSp</p>
+            </div>
+            <div class="col-md-1">
+                <p> tham số N</p>
+            </div>
+            @using (Html.BeginForm("caidatthamso", "NhanVien", FormMethod.Post))
+            {
+                <input type="hidden" name="Masp" value="@x.Masp" />
+                <div class="col-md-2">
+                    <input type="text" name="ThamSoN" value="@x.ThamSoN" />
+                </div>
+                <div class=" col-md-2">
+                    @*@Ajax.ActionLink("V","caidatthamso",new {@id=x.Masp },new AjaxOptions { HttpMethod="POST", InsertionMode=InsertionMode.Replace,UpdateTargetId= "thamsoN" })*@
+                    <input type="submit" value="ok" />
+                </div>
+            }
+        </div>
+        <div class="col-md-6">
+            <h4> hang ton kho</h4>
+            <div id="@x.Masp+chart">
+                <svg height="342" version="1.1" width="336" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.796875px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><path fill="none" stroke="#76c043" d="M165,277.3333333333333A103.33333333333333,103.33333333333333,0,1,0,69.8831930476669,133.61967294621832" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path><path fill="#76c043" stroke="#ffffff" d="M165,280.3333333333333A106.33333333333333,106.33333333333333,0,1,0,67.12173736195399,132.44734087046336L26.927215714355157,115.38339621225238A150,150,0,1,1,165,324Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#fcb216" d="M69.8831930476669,133.61967294621832A103.33333333333333,103.33333333333333,0,0,0,77.46730089534387,228.91633969258612" stroke-width="2" opacity="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;"></path><path fill="#fcb216" stroke="#ffffff" d="M67.12173736195399,132.44734087046336A106.33333333333333,106.33333333333333,0,0,0,74.92602898585385,230.5106850384999L33.70095134301579,256.3745095388791A155,155,0,0,1,22.324789571500332,113.42950941932746Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#000000" d="M77.46730089534387,228.91633969258612A103.33333333333333,103.33333333333333,0,0,0,129.25995057892294,270.9557973777574" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path><path fill="#000000" stroke="#ffffff" d="M74.92602898585385,230.5106850384999A106.33333333333333,106.33333333333333,0,0,0,128.22233624089165,273.77064310807935L113.11928309843651,314.7422865160994A150,150,0,0,1,37.93640452549916,253.7172672956895Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#00bcd4" d="M129.25995057892294,270.9557973777574A103.33333333333333,103.33333333333333,0,0,0,164.967536876447,277.33332823403777" stroke-width="2" opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path><path fill="#00bcd4" stroke="#ffffff" d="M128.22233624089165,273.77064310807935A106.33333333333333,106.33333333333333,0,0,0,164.96659439866644,280.3333280859937L164.95287611097146,323.9999925977968A150,150,0,0,1,113.11928309843651,314.7422865160994Z" stroke-width="3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="165" y="164" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 800 15px Arial;" font-size="15px" font-weight="800" transform="matrix(2.3485,0,0,2.3485,-223.3849,-235.9848)" stroke-width="0.42580645161290326"><tspan dy="6" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">bar</tspan></text><text x="165" y="184" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: 14px Arial;" font-size="14px" transform="matrix(2.1528,0,0,2.1528,-190.1903,-202.8889)" stroke-width="0.4645161290322581"><tspan dy="5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">approx. 15%</tspan></text></svg>
+            </div>
+            <script>
+                    var x = parseInt( @x.ThamSoN);
+                    var y = parseInt( @x.SoLuongTon);
+                var tile = x / 100;
+                var controng = Math.round((x / tile) - (y / tile));
+                var dachua = Math.round( y / tile);
+
+
+							Morris.Donut({
+							  element: '@x.Masp+chart',
+                                data: [
+                                    { value: (x / tile) - (y / tile), label: 'còn trống ', formatted: 'khoảng' + controng +"%"},
+                                    { value: y / tile, label: 'Đã chứa', formatted: 'khoảng' + dachua+"%"},
+								//{value: 0, label: 'baz', formatted: 'approx. 10%' },
+								//{value: 0, label: 'A really really long label', formatted: 'at most 5%' }
+							  ],
+							  formatter: function (x, data) { return data.formatted; }
+							});
+
+            </script>
+
+        </div>
+    } <div class="clearfix"></div>
+    @Html.PagedListPager(Model, page => Url.Action("chucnang", new { page }))
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

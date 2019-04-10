@@ -42,5 +42,16 @@ namespace BLL
             item.Status = "xoa";
             return new PnController().Update(item);
         }
+        public static bool ktthamso(int? id, int? soluongnhap)
+        {
+            SanPham sp = new Select().From(SanPham.Schema.TableName).Where(SanPham.Columns.Masp)
+                .IsEqualTo(id).ExecuteSingle<SanPham>();
+            int? kq = sp.SoLuongTon + soluongnhap;
+            if (kq <= sp.ThamSoN)
+            {
+                return true;
+            }
+            else return false;
+        }
     }
 }

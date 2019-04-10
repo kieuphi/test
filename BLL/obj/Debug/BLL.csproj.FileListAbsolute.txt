@@ -10,8 +10,12 @@ E:\thuctap\test\BLL\obj\Debug\BLL.dll
 E:\thuctap\test\BLL\obj\Debug\BLL.pdb
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\BLL.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\BLL.pdb
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\PagedList.dll
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\PagedList.Mvc.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\test.DAL.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\test.DAL.pdb
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\PagedList.xml
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\bin\Debug\PagedList.Mvc.xml
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\BLL\obj\Debug\BLL.csproj.CopyComplete

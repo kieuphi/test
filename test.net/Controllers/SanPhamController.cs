@@ -69,7 +69,7 @@ namespace test.net.Controllers
         }
 
         [HttpPost]
-        public ActionResult Seacrh(int? danhmuc, string TenSp, decimal GiaNhap)
+        public ActionResult Seacrh(int? danhmuc, string TenSp, decimal? GiaNhap)
         {
             List<DanHMuc> dm = DanhMucMager.getAllDanhMuc();
             ViewBag.danhmuc = new SelectList(dm, "MaDM", "TenDM");
@@ -85,7 +85,7 @@ namespace test.net.Controllers
 
         public bool Ktdangnhap()
         {
-            TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
             if (tk != null)
             {
                 if (tk.Loaitk == "nhan vien")
@@ -100,15 +100,19 @@ namespace test.net.Controllers
         {
 
             List<DanHMuc> dm = DanhMucMager.getAllDanhMuc();
-            ViewBag.danhmuc = new SelectList(dm, "MaDM", "TenDM");
+            ViewBag.danhmuc = dm;
             return View();
         }
         [HttpPost]
         public ActionResult Create(SanPham item)
         {
             SanPham sp = SanPhamMager.insertSanPham(item);
-            return View(sp);
+            return RedirectToAction("Index");
 
         }
+        //public ActionResult kthang()
+        //{
+        // List<SanPham>  
+        //}
     }
 }

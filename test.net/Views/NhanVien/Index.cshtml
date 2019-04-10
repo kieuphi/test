@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<CuaHangDAL.NhanVien>
-
+@{ ViewBag.Title = "nhan vien";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.MaNV)
         </th>
@@ -42,48 +44,49 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-      
-        <td>
-            @Html.DisplayFor(modelItem => item.MaNV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenNv)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sdt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cmd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Thamsoloinhuan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaNVchinhsua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ngaycapnhap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaTk)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cmd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thamsoloinhuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaTk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
 
 </table>

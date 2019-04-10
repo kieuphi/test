@@ -16,7 +16,7 @@ namespace test.net.Controllers
 
         public bool Ktdangnhap()
         {
-            TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
             if (tk != null)
             {
                 if (tk.Loaitk == "nhan vien")
@@ -32,16 +32,16 @@ namespace test.net.Controllers
 
             if (Ktdangnhap() == true)
             {
-                List<NhaCungCap> lstdm = NhaCungCapMager.getAll();
-                ViewBag.nhaccc = new SelectList(lstdm, "MaNCC", "TenNCC");
-                TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+                List<NhaCungCap> lstcc = NhaCungCapMager.getAll();
+                ViewBag.nhaccc = lstcc;
+                TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
                 int id = tk.MaTK;
                 NhanVien nv = NhanVienMager.GetbyTK(id);
 
                 ViewBag.MaNv = nv.MaNV;
                 return View();
             }
-            else { return RedirectToAction("Index"); }
+            else { return RedirectToAction("Index","Home"); }
    
         }
         [HttpPost]
@@ -65,9 +65,18 @@ namespace test.net.Controllers
             foreach( var x in lst)
             { // cap nhap so luong
                 sp = SanPhamMager.GetSanPhamByID(x.MaSp);
-                sp.SoLuongTon = sp.SoLuongTon + x.SoLuong;
-                SanPhamMager.uppdateSanPham(sp);
-                x.MaPN = item.MaPN;
+                if (PhieuNhapMager.ktthamso(x.MaSp,x.SoLuong) == true)
+                {
+                    sp.SoLuongTon = sp.SoLuongTon + x.SoLuong;
+                    SanPhamMager.uppdateSanPham(sp);
+                    x.MaPN = item.MaPN;
+                }
+
+                else
+                {
+                    return PartialView("error");
+                    //return Content("<script>  alert(\"" + x.SanPham.TenSp + " da bi loi \")+  location.reload(); </script>");
+                }
                 
             }
             CtPnMager.insertall(lst);

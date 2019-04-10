@@ -1,0 +1,45 @@
+﻿@using test.net.Models;
+@model List<CuaHangDAL.itemGioHang>
+
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+
+<div class="w3l-table-info">
+    <h3> giỏ hảng của bạn</h3>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>mã sp</th>
+                <th>Tên Sp</th>
+                <th>số lượng</th>
+                <th>đơn giá</th>
+                <th>thành tiền</th>
+               
+                <th> xóa</th>
+            </tr>
+        </thead>
+        <tbody >
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.MaSP</td>
+                    <td>@x.TenSP</td>
+                    <td>@x.SoLuong</td>
+                    <td>@x.DonGia</td>
+                    <td>@x.ThanhTien</td>
+                    <td>@Html.ActionLink("xóa", "XoaGioHang", new { @maSP = x.MaSP }, new { @class = "hvr-icon-sink-away btn btn-xs btn-primary btn-block" })</td>
+                    @*<td>@Ajax.ActionLink(" xóa  ", "XoaGioHang", new { @maSP = x.MaSP }, new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "tablegiohang", HttpMethod = "POST" }, new {@class= "hvr-icon-sink-away btn btn-xs btn-primary btn-block" })</td>*@
+                </tr>
+
+            }
+
+
+
+
+        </tbody>
+    </table>
+    <a href="@Url.Action("DatHang")" class="hvr-icon-fade btn btn-primary "> đặt hàng</a>
+</div>

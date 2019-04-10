@@ -98,6 +98,8 @@ C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\Microsoft.A
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\Newtonsoft.Json.dll
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\PagedList.dll
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\PagedList.Mvc.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\System.Web.Helpers.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\System.Web.Mvc.dll
@@ -110,6 +112,8 @@ C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\test.DAL.dl
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\WebGrease.dll
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\BLL.pdb
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\test.DAL.pdb
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\PagedList.xml
+C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\PagedList.Mvc.xml
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\System.Web.Helpers.xml
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\System.Web.Mvc.xml
 C:\Users\Acer\Documents\Visual Studio 2017\project\test\test.net\bin\System.Web.Optimization.xml

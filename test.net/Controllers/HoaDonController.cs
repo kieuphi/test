@@ -76,6 +76,7 @@ namespace test.net.Controllers
             
               
                     CTHDMager.insertall(lstcthd);
+                KhachHangMager.checkpointKH(kh.MaKh);
                 return RedirectToAction("Index");
             }
             catch
@@ -91,5 +92,6 @@ namespace test.net.Controllers
             }
 
         }
+        
     }
 }

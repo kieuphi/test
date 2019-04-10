@@ -259,6 +259,19 @@ namespace CuaHangDAL
 				colvarDonGiaBan.ForeignKeyTableName = "";
 				schema.Columns.Add(colvarDonGiaBan);
 				
+				TableSchema.TableColumn colvarThamSoN = new TableSchema.TableColumn(schema);
+				colvarThamSoN.ColumnName = "ThamSoN";
+				colvarThamSoN.DataType = DbType.Int32;
+				colvarThamSoN.MaxLength = 0;
+				colvarThamSoN.AutoIncrement = false;
+				colvarThamSoN.IsNullable = true;
+				colvarThamSoN.IsPrimaryKey = false;
+				colvarThamSoN.IsForeignKey = false;
+				colvarThamSoN.IsReadOnly = false;
+				colvarThamSoN.DefaultSetting = @"";
+				colvarThamSoN.ForeignKeyTableName = "";
+				schema.Columns.Add(colvarThamSoN);
+				
 				BaseSchema = schema;
 				//add this schema to the provider
 				//so we can query it later
@@ -348,6 +361,14 @@ namespace CuaHangDAL
 			get { return GetColumnValue<decimal?>(Columns.DonGiaBan); }
 			set { SetColumnValue(Columns.DonGiaBan, value); }
 		}
+		  
+		[XmlAttribute("ThamSoN")]
+		[Bindable(true)]
+		public int? ThamSoN 
+		{
+			get { return GetColumnValue<int?>(Columns.ThamSoN); }
+			set { SetColumnValue(Columns.ThamSoN, value); }
+		}
 		
 		#endregion
 		
@@ -416,7 +437,7 @@ namespace CuaHangDAL
 		/// <summary>
 		/// Inserts a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Insert(string varTenSp,decimal? varGiaNhap,int? varSoLuongTon,int? varMaDm,DateTime? varNgaycapnhap,int? varMaNVchinhsua,string varStatus,string varHinhanh,decimal? varDonGiaBan)
+		public static void Insert(string varTenSp,decimal? varGiaNhap,int? varSoLuongTon,int? varMaDm,DateTime? varNgaycapnhap,int? varMaNVchinhsua,string varStatus,string varHinhanh,decimal? varDonGiaBan,int? varThamSoN)
 		{
 			SanPham item = new SanPham();
 			
@@ -438,6 +459,8 @@ namespace CuaHangDAL
 			
 			item.DonGiaBan = varDonGiaBan;
 			
+			item.ThamSoN = varThamSoN;
+			
 		
 			if (System.Web.HttpContext.Current != null)
 				item.Save(System.Web.HttpContext.Current.User.Identity.Name);
@@ -448,7 +471,7 @@ namespace CuaHangDAL
 		/// <summary>
 		/// Updates a record, can be used with the Object Data Source
 		/// </summary>
-		public static void Update(int varMasp,string varTenSp,decimal? varGiaNhap,int? varSoLuongTon,int? varMaDm,DateTime? varNgaycapnhap,int? varMaNVchinhsua,string varStatus,string varHinhanh,decimal? varDonGiaBan)
+		public static void Update(int varMasp,string varTenSp,decimal? varGiaNhap,int? varSoLuongTon,int? varMaDm,DateTime? varNgaycapnhap,int? varMaNVchinhsua,string varStatus,string varHinhanh,decimal? varDonGiaBan,int? varThamSoN)
 		{
 			SanPham item = new SanPham();
 			
@@ -471,6 +494,8 @@ namespace CuaHangDAL
 				item.Hinhanh = varHinhanh;
 			
 				item.DonGiaBan = varDonGiaBan;
+			
+				item.ThamSoN = varThamSoN;
 			
 			item.IsNew = false;
 			if (System.Web.HttpContext.Current != null)
@@ -555,6 +580,13 @@ namespace CuaHangDAL
         
         
         
+        public static TableSchema.TableColumn ThamSoNColumn
+        {
+            get { return Schema.Columns[10]; }
+        }
+        
+        
+        
         #endregion
 		#region Columns Struct
 		public struct Columns
@@ -569,6 +601,7 @@ namespace CuaHangDAL
 			 public static string Status = @"status";
 			 public static string Hinhanh = @"hinhanh";
 			 public static string DonGiaBan = @"DonGiaBan";
+			 public static string ThamSoN = @"ThamSoN";
 						
 		}
 		#endregion
