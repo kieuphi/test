@@ -16,7 +16,7 @@
     <AssemblyName>test.net</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -244,7 +244,6 @@
     <Content Include="Views\SanPham\Index.cshtml" />
     <Content Include="Views\SanPham\Edit.cshtml" />
     <Content Include="Views\SanPham\Delete.cshtml" />
-    <Content Include="Views\Shared\header.cshtml" />
     <Content Include="Views\NhanVien\Index.cshtml" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <Content Include="Views\NhanVien\Create.cshtml" />
@@ -311,7 +310,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51486</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/</IISUrl>
+          <IISUrl>http://localhost:51486/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

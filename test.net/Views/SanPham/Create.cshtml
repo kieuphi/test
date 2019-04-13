@@ -9,7 +9,7 @@
 }
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
 
-@using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { @id = "createFrm" }))
+@using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { @id = "createFrm", @class = "col-sm-8" }))
 {
     @Html.AntiForgeryToken()
 
@@ -104,6 +104,7 @@
         </div>
     </div>
 }
+    } <div class="clearfix"></div>
 
 
 <script>
@@ -129,7 +130,7 @@
             },
             messages: {
                 "TenSp": {
-                    required:"bạn hãy nhập tên sản phẩm "
+                    required: "bạn hãy nhập tên sản phẩm "
                 },
                 "GiaNhap": {
                     required: "giá nhập phải được nhập",

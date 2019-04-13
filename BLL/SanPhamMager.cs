@@ -46,6 +46,7 @@ namespace BLL
 
         public static SanPham tinhgiaban(int? id)
         {
+
             SanPham sp = new Select().From(SanPham.Schema.TableName)
                  .Where(SanPham.Columns.Masp).IsEqualTo(id)
                  .ExecuteSingle<SanPham>();

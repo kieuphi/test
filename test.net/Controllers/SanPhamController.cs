@@ -31,12 +31,19 @@ namespace test.net.Controllers
         [HttpPost] //  sua sp co luu ten nhan vien sua
         public ActionResult Edit(SanPham sp)
         {
-            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
-            int id = tk.MaTK;
-            NhanVien nv = NhanVienMager.GetbyTK(id);
-            sp.MaNVchinhsua = nv.MaNV;
-            SanPhamMager.uppdateSanPham(sp);
-            return RedirectToAction("Index");
+            try
+            {
+                TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+                int id = tk.MaTK;
+                NhanVien nv = NhanVienMager.GetbyTK(id);
+                sp.MaNVchinhsua = nv.MaNV;
+                SanPhamMager.uppdateSanPham(sp);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Edit", sp.Masp);
+            }
         }
 
         [HttpGet]
@@ -53,7 +60,7 @@ namespace test.net.Controllers
         [HttpPost]  // xoa san pham , luu tt nhan vien xoa
         public ActionResult Delete(int id, FormCollection f)
         {
-            TaiKhoan tk = (TaiKhoan)Session["taikhoan"];
+            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
             int idtk = tk.MaTK;
             NhanVien nv = NhanVienMager.GetbyTK(idtk);
             var spxoa = SanPhamMager.delete(id);

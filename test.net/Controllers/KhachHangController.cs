@@ -11,9 +11,12 @@ namespace test.net.Controllers
     public class KhachHangController : Controller
     {
         // GET: KhachHang
-        public ActionResult Index()
+        public ActionResult Index(int? page )
         {
-            List<KhachHang> lstkh = KhachHangMager.GetAllKhachHang();
+           
+            int pagesize = 5;
+            int pagenumber = (page ?? 1);
+            IEnumerable<KhachHang> lstkh = KhachHangMager.paglistKH(pagenumber, pagesize);
             return View(lstkh);
         }
        [HttpGet]
@@ -39,7 +42,7 @@ namespace test.net.Controllers
         public ActionResult Delete (int id ,FormCollection f)
         {
             
-            KhachHangMager.DeleteKhachHang(id);
+            KhachHangMager.delete(id);
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -54,7 +57,7 @@ namespace test.net.Controllers
         {
             KhachHangMager.insertKhachhang(item);
 
-            return RedirectToAction("DangkyKH", "TaiKhoan", item);
+            return RedirectToAction("Index");
         }
     }
 }

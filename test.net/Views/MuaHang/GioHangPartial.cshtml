@@ -1,24 +1,57 @@
-﻿
+﻿@using CuaHangDAL;
+
+@{ 
+    List<itemGioHang> lstgh = (ViewBag.giohang) as List<itemGioHang>;
+}
 <li class="dropdown head-dpdn" id="divGioHang" >
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="badge">@ViewBag.TongSoLuong</span></a>
     <ul class="dropdown-menu anti-dropdown-menu w3l-msg">
         <li>
             <div class="notification_header">
-                <h3>You have @ViewBag.TongSoLuong sản phẩm</h3>
+                <h3> bạn có @ViewBag.TongSoLuong sản phẩm</h3>
+                <p>với giá @ViewBag.TongTien.ToString("#,##") </p>
             </div>
         </li>
-        
-        <li class="odd">
-            <a href="#">
-                <div class="user_img"><img src="" alt=""></div>
-                <div class="notification_desc">
-                    <p>@ViewBag.TongTien.ToString("#,##") </p>
-                    <p><span> tổn tiền thanh toán</span></p>
-                </div>
-                <div class="clearfix"></div>
-            </a>
-        </li>
-        
+        @if (lstgh == null)
+        {
+            <li class="odd">
+
+                <table>
+                    <tr>
+                        <th style="width:50%"> tên </th>
+                        <th style="width:50%"> số lượng</th>
+                    </tr>
+                    <tr>
+             
+                    </tr>
+                </table>
+
+            </li>
+        }
+        else
+        {
+
+                <li class="odd">
+
+                    <table>
+                        <tr>
+                            <th style="width:50%"> tên </th>
+                            <th style="width:50%"> số lượng</th>
+                        </tr>
+                        @foreach (var x in lstgh)
+                        {
+                        <tr>
+                            <td>@x.TenSP</td>
+                            <td>@x.SoLuong</td>
+
+                        </tr>
+                        }
+                    </table>
+
+                </li>
+
+
+        }
         <li>
             <div class="notification_bottom">
                 <a href="@Url.Action("XemGioHang","MuaHang")">See all messages</a>

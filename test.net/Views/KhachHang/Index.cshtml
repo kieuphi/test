@@ -1,51 +1,51 @@
-﻿@model IEnumerable<CuaHangDAL.KhachHang>
+﻿@using CuaHangDAL;
+@using PagedList.Mvc;
+@model  PagedList.IPagedList<CuaHangDAL.KhachHang>
 @{ ViewBag.Title = "khach hang";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2>Index</h2>
+@section header {
+    Trang  khách hàng
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.MaKh)
+            mã khách hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenKH)
+            Tên khách hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            Địa chỉ
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sdt)
+            >sdt
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cmd)
+            <label>cmd</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Diemso)
+            diểm số
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LoaiThanhVien.TenLoai)
+            loại thành viên
+        </th>
+
+        <th>
+            ngày cập nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaTk)
+            mã nhân viên chình sửa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ngaycapnhap)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaNVchinhsua)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
+            trạng thái
         </th>
         <th></th>
     </tr>
@@ -78,9 +78,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoai)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaTk)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Ngaycapnhap)
             </td>
@@ -92,12 +90,15 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { @id = item.MaKh }) |
-                @Html.ActionLink("Details", "Details", new { }) |
                 @Html.ActionLink("Delete", "Delete", new { @id = item.MaKh })
             </td>
         </tr>
     }
 
 </table>
+<div class="dlink">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
+</div>
 
 @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
