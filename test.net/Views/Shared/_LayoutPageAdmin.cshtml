@@ -113,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     </li>
                     <li>
-                        @Html.ActionLink("tạo mới hóa đơn", "Create", "HoaDon", null, new { @class = "subnav-text" })
+                        @Html.ActionLink("tạo mới hóa đơn", "Index", "MuaHang", null, new { @class = "subnav-text" })
 
                     </li>
 
@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <a href="@Url.Action("chucnang","NhanVien")">
                     <i class="fa fa-bar-chart nav_icon"></i>
                     <span class="nav-text">
-                       quản lý kho hàng
+                        quản lý kho hàng
                     </span>
                 </a>
             </li>
@@ -166,8 +166,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 </ul>
             </li>
-  
- 
+            <li class="has-subnav">
+                <a href="javascript:;" style="width:100%">
+                    <i style="padding:20px" class="fa fa-truck nav_icon"></i>
+                    <span class="nav-text">quản lý nhà cung cấp</span>
+                    <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+                </a>
+                <ul>
+                    <li>
+                        @Html.ActionLink("đanh sách nhà cung cấp", "Index", "NhaCungCap", null, new { @class = "subnav-text" })
+
+                    </li>
+                    <li>
+                        @Html.ActionLink("tạo nhà cung cấp;", "Create", "NhaCungCap", null, new { @class = "subnav-text" })
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <li class="has-subnav">
+                <a href="javascript:;" style="width:100%">
+                    <i  style="padding:20px" class="fa fa-book nav_icon"></i>
+                    <span class="nav-text">quản lý danh mục</span>
+                    <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
+                </a>
+                <ul>
+                    <li>
+                        @Html.ActionLink("danh mục sản phẩm", "Index", "DanhMuc", null, new { @class = "subnav-text" })
+
+                    </li>
+                    <li>
+                        @Html.ActionLink("tạo  mói danh mục", "Create", "DanhMuc", null, new { @class = "subnav-text" })
+
+                    </li>
+
+
+                </ul>
+            </li>
+
+
         </ul>
         <ul class="logout">
             <li>

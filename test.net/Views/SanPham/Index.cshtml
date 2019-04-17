@@ -1,104 +1,108 @@
 ﻿
 @model IEnumerable<CuaHangDAL.SanPham>
 
-@{   ViewBag.Title = "SanPham";
+@{ ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+@section header {
+   sản phẩm
+}
 
 @using (Html.BeginForm("Seacrh", "SanPham", FormMethod.Post))
 {
-   @Html.DropDownList("danhmuc", null, new { @class = "" })
+    @Html.DropDownList("danhmuc", null, new { @class = "" })
 
-    @Html.TextBox("TenSp", null, new { @class="txtten", @placeholder = " nhap ten sp tim kiem" })
-    @Html.TextBox("GiaNhap",null,new { @class="txtgia" , placeholder = " nhap gia sp tim kiem" })
+    @Html.TextBox("TenSp", null, new { @class = "txtten", @placeholder = " nhap ten sp tim kiem" })
+    @Html.TextBox("GiaNhap", null, new { @class = "txtgia", placeholder = " nhap gia sp tim kiem" })
     <input type="submit" class="btn active hvr-icon-fade" id="submit" />
 }
 
-<table class="table"id="hangtonkho">
+<table class="table" id="hangtonkho">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.Masp)
+            mã sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSp)
+            tên sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GiaNhap)
+            giá nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoLuongTon)
+            số lượng tồn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DanHMuc.TenDM)
+            danh mục
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ngaycapnhap)
+            ngày cập nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaNVchinhsua)
+            Mã nhân viên chỉnh sữa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            trạng thái
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Hinhanh)
+            hình ảnh
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DonGiaBan)
+            đơn giá bán
         </th>
-        <th></th>
+        <th> chức năng</th>
     </tr>
 
     @foreach (var item in Model)
     {
-    <tr>
+        <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Masp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaNhap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoLuongTon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DanHMuc.TenDM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ngaycapnhap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaNVchinhsua)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hinhanh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DonGiaBan)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { @id = item.Masp }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { @id = item.Masp })
-        </td>
-    </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Masp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DanHMuc.TenDM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hinhanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGiaBan)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { @id = item.Masp }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { @id = item.Masp })
+            </td>
+        </tr>
     }
 
 </table>
 @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
-@Ajax.ActionLink("kiem tra hang","kthang",new AjaxOptions { HttpMethod="POST",InsertionMode=InsertionMode.Replace,UpdateTargetId= "hangtonkho" })
+@Ajax.ActionLink("kiem tra hang", "kthang", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "hangtonkho" })
 <script>
     $('#submit').click(function () {
-      
+
         if (ktso() == false) {
             return false;
         }
@@ -111,7 +115,7 @@
                 x = false;
                 return x;
             }
-          
+
         })
         return x;
 

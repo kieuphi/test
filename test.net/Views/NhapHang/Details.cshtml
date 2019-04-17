@@ -2,31 +2,34 @@
 @{ ViewBag.Title = "nhap hang";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@section header {
+    trang chi tiết
+}
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+
 <table class="table">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.MaCTPn)
+            mã ctpn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaPN)
+            mã phiếu nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaSp)
+            mã sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSP)
+            tên sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoLuong)
+            số lượng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DonGiaNhap)
+            đơn giá nhập
         </th>
-        <th></th>
+     
     </tr>
 
     @foreach (var item in Model)
@@ -51,11 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DonGiaNhap)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+            <td></td>
         </tr>
     }
 

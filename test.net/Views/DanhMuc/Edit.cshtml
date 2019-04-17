@@ -1,0 +1,93 @@
+﻿@model CuaHangDAL.DanHMuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+@section header {
+    chỉnh sửa
+}
+<script src="~/Content/js/jquery.validate.min.js"></script>
+
+<style>
+    .main-grid form .form-control {
+        width: 400px;
+    }
+</style>>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>DanHMuc</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+        <div class="form-group">
+            <p class="control-label col-md-2">tên danh mục</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenDM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenDM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">ngày cập nhập</p>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Ngaycapnhap, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input type="datetime" name="Ngaycapnhap" value="@DateTime.Now" readonly />
+                @Html.ValidationMessageFor(model => model.Ngaycapnhap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.MaNVchinhsua, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaNVchinhsua, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaNVchinhsua, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<script>
+    $().ready(function () {
+
+        $('.main-grid form').validate({
+            onfocusout: false,
+            onkeyup: false,
+            onclick: false,
+
+            rules: {
+                "TenDM": {
+                    required: true
+                },
+
+
+
+            }
+
+
+        })
+    })
+</script>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

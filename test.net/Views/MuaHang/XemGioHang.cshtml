@@ -7,6 +7,9 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 <link href="~/Content/css/table-style.css" rel="stylesheet" />
+@section header {
+    gio hang
+}
 @{
     List<KhachHang> lst = (ViewBag.khachhang) as List<KhachHang>;
 }
@@ -38,16 +41,16 @@
         <tbody>
             @foreach (var x in Model)
             {
-            <tr>
-                <td>@x.MaSP</td>
-                <td>@x.TenSP</td>
-                <td>@x.SoLuong</td>
-                <td>@x.DonGia</td>
-                <td>@x.ThanhTien</td>
-                <td>@Html.ActionLink(" cap nhap", "CapNhatGioHang", new { @maSP = x.MaSP }, new { @class = "hvr-icon-sink-away btn btn-xs btn-primary btn-block" })</td>
+                <tr>
+                    <td>@x.MaSP</td>
+                    <td>@x.TenSP</td>
+                    <td><input type="text" data-id="@x.MaSP" class="txtQuantity" value="@x.SoLuong" /></td>
+                    <td>@x.DonGia</td>
+                    <td>@x.ThanhTien</td>
+                    @*<td>@Html.ActionLink(" cap nhap", "CapNhatGioHang", new { @maSP = x.MaSP }, new { @class = "hvr-icon-sink-away btn btn-xs btn-primary btn-block" })</td>*@
 
-                <td>@Html.ActionLink("xóa", "XoaGioHang", new { @maSP = x.MaSP }, new { @class = "hvr-icon-sink-away btn btn-xs btn-primary btn-block" })</td>
-            </tr>
+                    <td>@Html.ActionLink("xóa", "XoaGioHang", new { @maSP = x.MaSP }, new { @class = "hvr-icon-sink-away btn btn-xs btn-primary btn-block" })</td>
+                </tr>
 
             }
 
@@ -56,17 +59,40 @@
 
         </tbody>
     </table>
-    <a href="" class="hvr-icon-fade btn btn-primary"id="btndathang">đặt hàng</a>
-
+    <a href="" class="hvr-icon-fade btn btn-primary" id="btndathang">đặt hàng</a>
+    <input type="button" class="hvr-icon-sink-away btn btn-xs btn-primary" value="cap nhap" id="btnUpdate" />
 
 </div>
 <script>
     $(document).ready(function () {
         $("#dropDownId").change(function (event) {
-            
+
             var x = $(this).val();
             $("#btndathang").attr("href", "/MuaHang/DatHang/" + x);
 
         });
+        $('#btnUpdate').off('click').on('click', function () {
+            var listProduct = $('.txtQuantity');
+            var cartList = [];
+            $.each(listProduct, function (i, item) {
+                cartList.push({
+                    SoLuong: $(item).val(),
+                    MaSP: $(item).data('id')
+                });
+            });
+
+            $.ajax({
+                url: '/MuaHang/Update',
+                data: { cartModel: JSON.stringify(cartList) },
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        window.location.href = "/MuaHang/XemGioHang";
+                    }
+                }
+            })
+        });
+
     })
 </script>

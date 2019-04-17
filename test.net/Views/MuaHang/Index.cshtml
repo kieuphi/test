@@ -5,21 +5,24 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-
-<div class="col-md-9 product1">
+@section header {
+   shopping
+}
+<div class="col-md-12 ">
     <div class="bottom-product">
         @foreach (var item in Model)
         {
-            <div class="col-md-4 bottom-cd simpleCart_shelfItem">
-                <div class="product-at " style="width:200px;height:150px">
-                   
-                </div>
-                <p> @item.DonGiaBan</p>
-                <p class="tun">@item.TenSp</p>
-                
+            <div class="col-md-4 bottom-cd">
+
+                <img src="@Url.Content("~/Content/HinhAnh/"+item.Hinhanh)" alt="Alternate Text" style="width:100%;height:100%" />
+
+                <p style="text-align:center" class="tun">Đơn giá bán: @item.DonGiaBan</p>
+                <p style="text-align:center"> Tên SP :@item.TenSp</p>
+
                 @*Thẻ a nút thêm sản phẩm --- chèn Action vào*@
                 @*<a href="@Url.Action("ThemGioHang","GioHang",new { @MaSP = item.MaSP, @strURL = Request.Url.ToString()})" class="item_add"><p class="number item_price"><i> </i>@item.DonGia.Value.ToString("#,##") VNĐ</p></a>*@
-                @Ajax.ActionLink("Thêm giỏ hàng", "ThemGioHangAjax", "MuaHang", new { @MaSP = item.Masp, @strURL = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divGioHang", InsertionMode = InsertionMode.Replace })
+                @Ajax.ActionLink("Đặt mua", "ThemGioHangAjax", "MuaHang", new { @MaSP = item.Masp, @strURL = Request.Url.ToString() }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divGioHang", InsertionMode = InsertionMode.Replace }, new { @class = "btn btn-success col-sm-6" })
+                <input type="button" value="cap nhap" class="btn btn-info col-sm-6" data-id="@item.Masp" />
             </div>
         }
         <div class="clearfix"> </div>
@@ -33,3 +36,22 @@
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     @Html.PagedListPager(Model, page => Url.Action("Index", new { @page = page }))
 </div>
+<script>
+    $('.btn-info').each(function () {
+        $(this).click(function () {
+            var x = $(this).attr('data-id');
+            var y = $(this).closest('.col-md-4').find('.tun');
+
+            $.ajax({
+                url: '/MuaHang/price/',
+                type: "POST",
+                dataType: "html",
+                data: { id: x },
+                success: function (data) {
+                    y.text(data);
+                }
+            })
+
+        })
+    })
+</script>

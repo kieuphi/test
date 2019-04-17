@@ -51,7 +51,7 @@ namespace test.net.Controllers
             }
         }
         // h kiem tra session tai khoan  nhan vien
-        public bool Ktdangnhap()
+        public  bool Ktdangnhap()
         {
             TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
             if (tk != null)
@@ -65,19 +65,93 @@ namespace test.net.Controllers
         } 
         public ActionResult caidatthamso( FormCollection f)
         {
-            int id = int.Parse(f["Masp"]);
-            SanPham sp = SanPhamMager.GetSanPhamByID(id);
-            int thamso = int.Parse( f["ThamSoN"]);
-            sp.ThamSoN = thamso;
-            SanPhamMager.uppdateSanPham(sp);
+            try
+            {
+                int id = int.Parse(f["Masp"]);
+                SanPham sp = SanPhamMager.GetSanPhamByID(id);
+                int thamso = int.Parse(f["ThamSoN"]);
+                if (sp.SoLuongTon < thamso)
+                {
+                    sp.ThamSoN = thamso;
+                    SanPhamMager.uppdateSanPham(sp);
+                    return RedirectToAction("chucnang");
+                }
+                else
+                    return RedirectToAction("Index", "Error");
 
-            return RedirectToAction("chucnang");
+                
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Error");
+            }
         }
-        //[HttpPost]
-        //public ActionResult chucnang(IEnumerable<SanPham> lstpage, int page = 1, int pagesize = 1)
-        //{
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if(Ktdangnhap() == true)
+            {
+                return View(NhanVienMager.GetItemById(id));
 
-        //}
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        [HttpPost]
+        public ActionResult Edit(NhanVien item)
+        {
+
+            try
+            {
+                TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+                int id = tk.MaTK;
+                NhanVien nv = NhanVienMager.GetbyTK(id);
+                nv.MaNVchinhsua = nv.MaNV;
+                NhanVienMager.uppdate(item);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Edit", item.MaNV);
+            }
+        }
+        public ActionResult Delete(int? id)
+        {
+            if (Ktdangnhap() == true)
+            {
+                return View(NhanVienMager.GetItemById(id));
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        [HttpPost]
+        public ActionResult Delete(int? id , FormCollection f)
+        {
+            try
+            {
+                TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+                int idtk = tk.MaTK;
+                NhanVien nv = NhanVienMager.GetbyTK(idtk);
+                var itemxoa = NhanVienMager.delete(id);
+                itemxoa.MaNVchinhsua = nv.MaNV;
+                itemxoa.Ngaycapnhap = DateTime.Now;
+                NhanVienMager.uppdate(itemxoa);
+
+
+                return RedirectToAction("Index");
+            }
+
+            catch
+            {
+                return RedirectToAction("Delete", id);
+            }
+            
+        }
     }
 }
 

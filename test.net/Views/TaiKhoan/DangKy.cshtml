@@ -2,6 +2,15 @@
 @{ ViewBag.Title = "dang ky";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
+<style>
+    .main-grid form .form-control {
+        width: 400px;
+    }
+</style>
+@section header {
+    thêm mới
+}
+<script src="~/Content/js/jquery.validate.min.js"></script>
 
 @using (Html.BeginForm("DangKy", "TaiKhoan", FormMethod.Post))
 {
@@ -45,12 +54,38 @@
         @Html.Hidden("Ngaycapnhap", DateTime.Now)
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" id="nutdangki" />
+                <input type="submit" value="Create" class="btn btn-success" id="nutdangki" />
             </div>
         </div>
     </div>
 }
+<script>
+        $().ready(function () {
+            $(".main-grid form").validate({
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    "TenTK": {
+                        required: true,
 
+                    },
+                    "MatKhau": {
+                        required: true,
+
+                    }
+                },
+                messages: {
+                    "TenTK": {
+                        required :"bạn hãy nhập tên tài khoản"
+                    },
+                    "MatKhau": {
+                        required: "ban hãy nhập mật khẩu"
+                    }
+                }
+            });
+    });
+    </script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

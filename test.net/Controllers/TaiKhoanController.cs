@@ -84,5 +84,7 @@ namespace test.net.Controllers
 
             return RedirectToAction("Index", "KhachHang");
         }
+     
+
     }
 }

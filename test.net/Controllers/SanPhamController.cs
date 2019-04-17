@@ -22,6 +22,8 @@ namespace test.net.Controllers
         {
             if (Ktdangnhap() == true)
             {
+                List<DanHMuc> dm = DanhMucMager.getAllDanhMuc();
+                ViewBag.danhmuc = dm;
                 SanPham sp = SanPhamMager.GetSanPhamByID(id);
                 return View(sp);
             }

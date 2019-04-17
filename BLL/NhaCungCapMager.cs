@@ -27,7 +27,7 @@ namespace BLL
                 .IsNotEqualTo("xoa").ExecuteTypedList<NhaCungCap>();
         }
 
-        public static NhaCungCap GetItemById(int id)
+        public static NhaCungCap GetItemById(int? id)
         {
             return new Select().From(NhaCungCap.Schema.TableName)
                 .Where(NhaCungCap.Columns.MaNCC).IsEqualTo(id)

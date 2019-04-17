@@ -16,7 +16,7 @@
     <AssemblyName>test.net</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -135,10 +135,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DanhMucController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\MuaHangController.cs" />
+    <Compile Include="Controllers\NhaCungCapController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NhapHangController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
@@ -168,6 +171,9 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\table-style.css" />
     <Content Include="Content\css\typo.css" />
+    <Content Include="Content\gmail\donhang.html" />
+    <Content Include="Content\HinhAnh\141382.jpg" />
+    <Content Include="Content\HinhAnh\error.png" />
     <Content Include="Content\HinhAnh\Hydrangeas.jpg" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\gmaps.js" />
@@ -178,6 +184,7 @@
     <Content Include="Content\js\jquery.countdown.min.js" />
     <Content Include="Content\js\jquery.geocomplete.js" />
     <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.validate.min.js" />
     <Content Include="Content\js\jquery.vmap.js" />
     <Content Include="Content\js\jquery.vmap.sampledata.js" />
     <Content Include="Content\js\jquery.vmap.world.js" />
@@ -209,6 +216,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\etc\JavaScript.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\md5.js" />
@@ -264,6 +272,19 @@
     <Content Include="Views\MuaHang\GioHangPartial.cshtml" />
     <Content Include="Views\NhapHang\error.cshtml" />
     <Content Include="Views\MuaHang\XemGioHang.cshtml" />
+    <Content Include="Views\NhanVien\Edit.cshtml" />
+    <Content Include="Views\NhanVien\Delete.cshtml" />
+    <Content Include="Views\HoaDon\Delete.cshtml" />
+    <Content Include="Views\NhapHang\Delete.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\DanhMuc\Index.cshtml" />
+    <Content Include="Views\DanhMuc\Create.cshtml" />
+    <Content Include="Views\DanhMuc\Edit.cshtml" />
+    <Content Include="Views\DanhMuc\Delete.cshtml" />
+    <Content Include="Views\NhaCungCap\Index.cshtml" />
+    <Content Include="Views\NhaCungCap\Create.cshtml" />
+    <Content Include="Views\NhaCungCap\Edit.cshtml" />
+    <Content Include="Views\NhaCungCap\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -310,7 +331,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51486</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51486/</IISUrl>
+          <IISUrl>http://localhost/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

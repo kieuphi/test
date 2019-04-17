@@ -1,30 +1,33 @@
-﻿   @model IEnumerable<CuaHangDAL.Hd>
+﻿@model IEnumerable<CuaHangDAL.Hd>
 @{ ViewBag.Title = "hoa don";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@section header {
+    hóa đơn
+}
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+
 <table class="table">
     <tr>
 
 
         <th>
-            @Html.DisplayNameFor(model => model.MaHD)
+            mã hóa đơn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayDat)
+          ngày đặt
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+          tên khách hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NhanVien.TenNv)
+           tên nhân viên 
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+           trạng thái
         </th>
-        <th></th>
+        <th> chức năng</th>
     </tr>
 
     @foreach (var item in Model)
@@ -47,9 +50,8 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { @id = item.MaHD }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { @id = item.MaHD })
             </td>
         </tr>
     }

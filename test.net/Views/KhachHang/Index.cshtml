@@ -8,6 +8,8 @@
 @section header {
     Trang  khách hàng
 }
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
 
 
 <table class="table">
@@ -83,7 +85,7 @@
                 @Html.DisplayFor(modelItem => item.Ngaycapnhap)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+                @Html.DisplayFor(modelItem => item.NhanVien.TenNv)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

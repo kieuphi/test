@@ -1,0 +1,141 @@
+﻿@model CuaHangDAL.Pn
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+@section header {
+    delete
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Pn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ValidateWhenSaving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ValidateWhenSaving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLoaded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLoaded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsNew)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsNew)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDirty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDirty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TableName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TableName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProviderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NullExceptionMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NullExceptionMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvalidTypeExceptionMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvalidTypeExceptionMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthExceptionMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthExceptionMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaPN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaPN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayNhap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNCC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNCC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaNV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+
+    @using (Html.BeginForm("Delete", "NhapHang", new { @id = Model.MaPN }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

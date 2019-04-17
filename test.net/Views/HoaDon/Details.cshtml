@@ -2,31 +2,33 @@
 @{ ViewBag.Title = "hoa don";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@section header {
+   chi tiết
+}
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
 <table class="table">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.MaCTHd)
+            mã chi tiết
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaHD)
+            mã hóa đơn
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaSp)
+            mã sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenSP)
+            tên sản phẩm
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoLuong)
+            số lượng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DonGiaBan)
+            giá bán
         </th>
-        <th></th>
+      
     </tr>
 
     @foreach (var item in Model)
@@ -51,11 +53,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DonGiaBan)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+      
         </tr>
     }
 

@@ -61,31 +61,64 @@ namespace test.net.Controllers
         [HttpPost]
         public ActionResult CreateCtPn(Pn item, IEnumerable<Ctpn> lst)
         {
-            SanPham sp;
-            foreach( var x in lst)
-            { // cap nhap so luong
-                sp = SanPhamMager.GetSanPhamByID(x.MaSp);
-                if (PhieuNhapMager.ktthamso(x.MaSp,x.SoLuong) == true)
-                {
-                    sp.SoLuongTon = sp.SoLuongTon + x.SoLuong;
-                    SanPhamMager.uppdateSanPham(sp);
-                    x.MaPN = item.MaPN;
-                }
+            try
+            {
+                SanPham sp;
+                foreach (var x in lst)
+                { // cap nhap so luong
+                    sp = SanPhamMager.GetSanPhamByID(x.MaSp);
+                    if (PhieuNhapMager.ktthamso(x.MaSp, x.SoLuong) == true)
+                    {
+                        sp.SoLuongTon = sp.SoLuongTon + x.SoLuong;
+                        SanPhamMager.uppdateSanPham(sp);
+                        x.MaPN = item.MaPN;
+                        x.TenSP = sp.TenSp;
+                    }
 
-                else
-                {
-                    return PartialView("error");
-                    //return Content("<script>  alert(\"" + x.SanPham.TenSp + " da bi loi \")+  location.reload(); </script>");
+                    else
+                    {
+                        return PartialView("error");
+                        //return Content("<script>  alert(\"" + x.SanPham.TenSp + " da bi loi \")+  location.reload(); </script>");
+                    }
+
                 }
-                
+                CtPnMager.insertall(lst);
+                return RedirectToAction("Index");
             }
-            CtPnMager.insertall(lst);
-            return RedirectToAction("Index");
+            catch
+            {
+                return View("error");
+            }
         }
         public ActionResult Details (int? id)
         {
             List<Ctpn> lst = CtPnMager.GetItembyMapn(id);
             return View(lst);
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            if (Ktdangnhap() == true)
+            {
+                return View(PhieuNhapMager.GetItemById(id));
+
+            }
+            else return RedirectToAction("Index");
+        }
+
+        [HttpPost]  // xoa san pham , luu tt nhan vien xoa
+        public ActionResult Delete(int id, FormCollection f)
+        {
+            try
+            {
+                PhieuNhapMager.delete(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Delete", id);
+            }
         }
     }
 }

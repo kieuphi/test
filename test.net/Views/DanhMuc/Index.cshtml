@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CuaHangDAL.DanHMuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+@section header {
+    Trang  danh mục
+}
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            mã danh mục
+        </th>
+        <th>
+            tên danh mục
+        </th>
+        <th>
+            ngày cập nhập
+        </th>
+        <th>
+            nhân viên chinh sửa
+        </th>
+        <th>
+            trạng thái
+        </th>
+        <th>chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhanVien.TenNv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { @id = item.MaDM }) |
+              
+                @Html.ActionLink("Delete", "Delete", new { @id = item.MaDM })
+            </td>
+        </tr>
+    }
+
+</table>

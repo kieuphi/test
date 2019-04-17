@@ -27,14 +27,14 @@ namespace BLL
                 .IsNotEqualTo("xoa").ExecuteTypedList<NhanVien>();
         }
 
-        public static NhanVien GetItemById(int id)
+        public static NhanVien GetItemById(int? id)
         {
             return new Select().From(NhanVien.Schema.TableName)
                 .Where(NhanVien.Columns.MaNV).IsEqualTo(id)
                 .ExecuteSingle<NhanVien>();
         }
 
-        public static NhanVien delete(int id)
+        public static NhanVien delete(int? id)
         {
             NhanVien item = new Select().From(NhanVien.Schema.TableName)
                  .Where(NhanVien.Columns.MaNV).IsEqualTo(id)
@@ -57,5 +57,6 @@ namespace BLL
                 .ExecuteSingle<NhanVien>();
             return item;
         }
+
     }
 }

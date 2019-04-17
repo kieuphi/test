@@ -22,15 +22,32 @@ namespace test.net.Controllers
        [HttpGet]
         public ActionResult Edit(int id)
         {
-           KhachHang kh = KhachHangMager.GetKhachHangByID(id);
-            return View(kh);
+            if (Ktdangnhap() == true)
+            {
+                return View(KhachHangMager.GetKhachHangByID(id));
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         [HttpPost]
         public ActionResult Edit(KhachHang kh)
         {
-            kh.Status = "trong";
-            KhachHangMager.uppdateKhachHang(kh);
-            return RedirectToAction("Index");
+            try
+            {
+                TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+                int id = tk.MaTK;
+                NhanVien nv = NhanVienMager.GetbyTK(id);
+                kh.MaNVchinhsua = nv.MaNV;
+                KhachHangMager.uppdateKhachHang(kh);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Edit", kh.MaKh);
+            }
         }
         [HttpGet]
         public ActionResult Delete(int? id)
@@ -58,6 +75,18 @@ namespace test.net.Controllers
             KhachHangMager.insertKhachhang(item);
 
             return RedirectToAction("Index");
+        }
+        public bool Ktdangnhap()
+        {
+            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+            if (tk != null)
+            {
+                if (tk.Loaitk == "nhan vien")
+                    return true;
+                else return false;
+            }
+            else
+                return false;
         }
     }
 }

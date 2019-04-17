@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using BLL;
 using CuaHangDAL;
-using BLL;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace test.net.Controllers
 {
@@ -16,11 +13,14 @@ namespace test.net.Controllers
             List<Hd> lst = HoaDonManger.getAll();
             return View(lst);
         }
+
         public ActionResult Details(int? id)
         {
             List<Cthd> lst = CTHDMager.GetItembyMaHD(id);
             return View(lst);
         }
+
+        // them
         [HttpGet]
         public ActionResult create()
         {
@@ -39,19 +39,20 @@ namespace test.net.Controllers
             {
                 return RedirectToAction("Index");
             }
-        
         }
+
         [HttpPost]
-        public ActionResult create(Hd hd , IEnumerable<Cthd> lstcthd)
+        public ActionResult create(Hd hd, IEnumerable<Cthd> lstcthd)
         {
-            try {
+            try
+            {
                 TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
-                 
+
                 HoaDonManger.insert(hd);
                 SanPham sp;
                 Hd item = HoaDonManger.GetItemById(hd.MaHD);
                 KhachHang kh = KhachHangMager.GetKhachHangByID(hd.MaKH);
-                if(kh != null)
+                if (kh != null)
                 {
                     decimal? thanhtien;
                     foreach (var x in lstcthd)
@@ -68,14 +69,11 @@ namespace test.net.Controllers
                             thanhtien = x.SoLuong * x.DonGiaBan * (decimal)0.1;
                             kh.Diemso = kh.Diemso + (int)thanhtien;
                             KhachHangMager.uppdateKhachHang(kh);
-
                         }
-
                     }
                 }
-            
-              
-                    CTHDMager.insertall(lstcthd);
+
+                CTHDMager.insertall(lstcthd);
                 KhachHangMager.checkpointKH(kh.MaKh);
                 return RedirectToAction("Index");
             }
@@ -90,8 +88,47 @@ namespace test.net.Controllers
                 ViewBag.nhanvien = TaiKhoanMager.getNVbytk(tk.MaTK);
                 return View();
             }
-
         }
-        
+
+        public bool Ktdangnhap()
+        {
+            TaiKhoan tk = (TaiKhoan)Session["USER_SESSION"];
+            if (tk != null)
+            {
+                if (tk.Loaitk == "nhan vien")
+                    return true;
+                else return false;
+            }
+            else
+                return false;
+        }
+
+        // xoa
+        public ActionResult Delete(int? id)
+        {
+            if (Ktdangnhap() == true)
+            {
+                return View(HoaDonManger.GetItemById(id));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int? id, FormCollection f)
+        {
+            try
+            {
+                HoaDonManger.delete(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Delete", id);
+            }
+        }
     }
 }

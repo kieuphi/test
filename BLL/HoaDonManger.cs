@@ -27,14 +27,14 @@ namespace BLL
                 .IsNotEqualTo("xoa").ExecuteTypedList<Hd>();
         }
 
-        public static Hd GetItemById(int id)
+        public static Hd GetItemById(int? id)
         {
             return new Select().From(Hd.Schema.TableName)
                 .Where(Hd.Columns.MaHD).IsEqualTo(id)
                 .ExecuteSingle<Hd>();
         }
 
-        public static Hd delete(int id)
+        public static Hd delete(int? id)
         {
             Hd item = new Select().From(Hd.Schema.TableName)
                  .Where(Hd.Columns.MaHD).IsEqualTo(id)

@@ -1,0 +1,128 @@
+﻿@model CuaHangDAL.NhaCungCap
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<script src="~/Content/js/jquery.validate.min.js"></script>
+<style>
+    .main-grid form .form-control {
+        width: 400px;
+    }
+</style>
+@section header {
+    thêm mới
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>NhaCungCap</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+
+        @*<div class="form-group">
+            <p class="control-label col-md-2">mã nhà cung cấp</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaNCC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <p class="control-label col-md-2">tên nhà cung cấp</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenNCC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenNCC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">địa chỉ nhà cung cấp</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Diachi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Diachi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p class="control-label col-md-2">email</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Ngaycapnhap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ngaycapnhap, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ngaycapnhap, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.MaNVchinhsua, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaNVchinhsua, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaNVchinhsua, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        @Html.Hidden("Status","trong")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+    <script>
+        $().ready(function () {
+
+            $('.main-grid form').validate({
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+
+                rules: {
+                    "TenNCC": {
+                        required: true
+                    },
+                    "DiaChi": {
+                        required: true,
+                    },
+                    "Email": {
+                        required: true,
+                    },
+               
+                },
+                messages: {
+                    "TenNCC": {
+                        required: "tên chưa nhập "
+                    },
+                    "DiaChi": {
+                        required: "địa chỉ  chưa nhập",
+
+                    },
+                    "Email": {
+                        required: "Email  chưa nhập",
+                    },
+
+                }
+
+            })
+        })
+    </script>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

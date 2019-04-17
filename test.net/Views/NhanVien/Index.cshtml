@@ -2,46 +2,49 @@
 @{ ViewBag.Title = "nhan vien";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+
+@section header {
+nhân viên
+}
 <table class="table">
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.MaNV)
+            mã nhân viên
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenNv)
+            tên nhân viên
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            địa chỉ
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Sdt)
+            só diện thoại
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Cmd)
+            CMD
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Thamsoloinhuan)
+            tham số lợi nhuận
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaNVchinhsua)
+            nhân viên chỉnh sửa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ngaycapnhap)
+            ngày cập nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaTk)
+            tên tài khoản
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            trạng thái
         </th>
-        <th></th>
+        <th> chức năng</th>
     </tr>
 
     @foreach (var item in Model)
@@ -70,21 +73,20 @@
                 @Html.DisplayFor(modelItem => item.Thamsoloinhuan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaNVchinhsua)
+                @Html.DisplayFor(modelItem => item.ParentNhanVien.TenNv)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Ngaycapnhap)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaTk)
+                @Html.DisplayFor(modelItem => item.TaiKhoan.TenTK)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { @id = item.MaNV }) |
+                @Html.ActionLink("Delete", "Delete", new { @id = item.MaNV })
             </td>
         </tr>
     }

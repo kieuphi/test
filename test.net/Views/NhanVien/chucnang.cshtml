@@ -4,6 +4,9 @@
 @{ ViewBag.Title = "nhan vien";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
+@section header {
+   kho hàng
+}
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 <script src="~/Scripts/Morris.js"></script>
 <script src="~/Scripts/raphael-min.js"></script>
@@ -17,14 +20,14 @@
 @*@{
         List<SanPham> lst = ViewBag.sanpham as List<SanPham>;
     }*@
-<h1 style="text-align:center"> Tham so N</h1>
-<h2> so luong tối đa hàng hóa có trong kho</h2>
+<h1 style="text-align:center"> cài đặt kho hàng</h1>
+<h2> Điều chỉnh  giới hạn kho chứa</h2>
 <div class="form-horizontal">
 
     @foreach (var x in Model)
     {
         <div class="form-group">
-            <p class="control-label col-md-2"> ten san pham</p>
+            <p class="control-label col-md-2"> tên sản phảm</p>
             <div class="col-md-4">
                 @*@Html.DisplayFor(modelItem => modelItem.TenSp, new { htmlAttributes = new { @class = "form-control" } })*@
                 <p class="form-control">@x.TenSp</p>
@@ -69,7 +72,7 @@
 							});
 
             </script>
-
+                
         </div>
     } <div class="clearfix"></div>
     @Html.PagedListPager(Model, page => Url.Action("chucnang", new { page }))

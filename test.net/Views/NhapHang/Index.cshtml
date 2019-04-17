@@ -3,8 +3,11 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 @section header {
-    trang phieu nhap
+    trang phiếu nhập
 }
+@*css table*@
+<link href="~/Content/css/table-style.css" rel="stylesheet" />
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -12,21 +15,21 @@
     <tr>
 
         <th>
-            @Html.DisplayNameFor(model => model.MaPN)
+            mã phiếu nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayNhap)
+            ngày nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaNCC)
+            nhà cung cấp
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaNV)
+            nhân viên nhập
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            trang thái
         </th>
-        <th></th>
+        <th>chúc năng</th>
     </tr>
 
     @foreach (var item in Model)
@@ -40,18 +43,17 @@
                 @Html.DisplayFor(modelItem => item.NgayNhap)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaNCC)
+                @Html.DisplayFor(modelItem => item.NhaCungCap.TenNCC)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaNV)
+                @Html.DisplayFor(modelItem => item.NhanVien.TenNv)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { @id = item.MaPN }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { @id = item.MaPN })
             </td>
         </tr>
     }
