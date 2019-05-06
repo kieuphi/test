@@ -11,7 +11,6 @@
     thêm mới
 }
 @*jquery  valuedation*@
-<script src="~/Content/js/jquery.validate.min.js"></script>
 
 @using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { @id = "createFrm" }))
 {
@@ -111,44 +110,6 @@
 <div class="clearfix"></div>
 
 
-<script>
-    $().ready(function () {
-
-        $('#createFrm').validate({
-            onfocusout: false,
-            onkeyup: false,
-            onclick: false,
-
-            rules: {
-                "TenSp": {
-                    required: true
-                },
-                "GiaNhap": {
-                    required: true,
-                    number: true,
-                },
-                "SoLuongTon": {
-                    required: true,
-                    number: true,
-                }
-            },
-            messages: {
-                "TenSp": {
-                    required: "bạn hãy nhập tên sản phẩm "
-                },
-                "GiaNhap": {
-                    required: "giá nhập phải được nhập",
-                    number: "giá nhập phải la số",
-                },
-                "SoLuongTon": {
-                    required: "giá nhập phải được nhập",
-                    number: "giá nhập phải la số",
-                },
-            }
-
-        })
-    })
-</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

@@ -13,6 +13,11 @@ namespace test.net
                         "~/Scripts/jquery.validate*"
                         ));
 
+            bundles.Add(new ScriptBundle("~/bundles/valuedatio").Include(
+                        "~/Scripts/etc/valuedation.js",
+                        "~/Content/js/jquery.validate.min.js"
+                        ));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 

@@ -7,9 +7,16 @@
 @*css table*@
 <link href="~/Content/css/table-style.css" rel="stylesheet" />
 @section header {
-   sản phẩm
+    sản phẩm
 }
-
+@{
+    if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+        alert(@Html.Raw(Json.Encode(TempData["message"])));
+        </script>
+    }
+}
 @using (Html.BeginForm("Seacrh", "SanPham", FormMethod.Post))
 {
     @Html.DropDownList("danhmuc", null, new { @class = "" })
@@ -100,6 +107,9 @@
 </table>
 @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-success" })
 @Ajax.ActionLink("kiem tra hang", "kthang", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "hangtonkho" })
+
+
+
 <script>
     $('#submit').click(function () {
 

@@ -11,13 +11,14 @@
 @section header {
     chỉnh sửa
 }
- @*jquery  valuedation*@
+@*jquery  valuedation*@
 <script src="~/Content/js/jquery.validate.min.js"></script>
 <style>
     .main-grid form .form-control {
         width: 400px;
     }
 </style>
+
 @using (Html.BeginForm("Edit", "SanPham", FormMethod.Post))
 {
     @Html.AntiForgeryToken()

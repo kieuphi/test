@@ -4,7 +4,6 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-<script src="~/Content/js/jquery.validate.min.js"></script>
 <style>
     .main-grid form .form-control {
         width: 400px;
@@ -86,43 +85,7 @@
         </div>
     </div>
 }
-    <script>
-        $().ready(function () {
-
-            $('.main-grid form').validate({
-                onfocusout: false,
-                onkeyup: false,
-                onclick: false,
-
-                rules: {
-                    "TenNCC": {
-                        required: true
-                    },
-                    "DiaChi": {
-                        required: true,
-                    },
-                    "Email": {
-                        required: true,
-                    },
-               
-                },
-                messages: {
-                    "TenNCC": {
-                        required: "tên chưa nhập "
-                    },
-                    "DiaChi": {
-                        required: "địa chỉ  chưa nhập",
-
-                    },
-                    "Email": {
-                        required: "Email  chưa nhập",
-                    },
-
-                }
-
-            })
-        })
-    </script>
+ 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

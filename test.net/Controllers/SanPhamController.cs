@@ -40,6 +40,7 @@ namespace test.net.Controllers
                 NhanVien nv = NhanVienMager.GetbyTK(id);
                 sp.MaNVchinhsua = nv.MaNV;
                 SanPhamMager.uppdateSanPham(sp);
+                TempData["message"] = "sua thanh tong";
                 return RedirectToAction("Index");
             }
             catch

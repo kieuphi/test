@@ -47,22 +47,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--skycons-icons-->
     <script src="~/Content/js/skycons.js"></script>
     <!--//skycons-icons-->
+    <style>
+        #main {
+            transition: margin-left .5s;
+            
+        }
+        #mySidenav {
+            width: 0;
+            position: fixed;
+        }
+        .main-menu .closebtnnav {
+        text-align :right;
+            top: 0;
+            right: 0;
+            font-size: 36px;
+        
+        }
+    </style>
 </head>
 <body class="dashboard-page" style="">
     <script>
-	        var theme = $.cookie('protonTheme') || 'default';
-	        $('body').removeClass (function (index, css) {
-	            return (css.match (/\btheme-\S+/g) || []).join(' ');
-	        });
-	        if (theme !== 'default') $('body').addClass(theme);
+        var theme = $.cookie('protonTheme') || 'default';
+        $('body').removeClass(function (index, css) {
+            return (css.match(/\btheme-\S+/g) || []).join(' ');
+        });
+        if (theme !== 'default') $('body').addClass(theme);
     </script>
-    <nav class="main-menu">
+    <nav id="mySidenav" class="main-menu">
         <ul>
             <li>
-                <a href="index.html">
-                    <i class="fa fa-home nav_icon"></i>
-                    <span class="nav-text">
-                        Dashboard
+                <a href="#" onclick="closeNav()" style="width:100%">
+
+                    <span class="nav-text closebtnnav">
+                        <i class="fa fa-times"></i>
                     </span>
                 </a>
             </li>
@@ -178,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                     </li>
                     <li>
-                        @Html.ActionLink("tạo nhà cung cấp;", "Create", "NhaCungCap", null, new { @class = "subnav-text" })
+                        @Html.ActionLink("đanh sách nhà cung cấp", "Index", "NhaCungCap", null, new { @class = "subnav-text" })
 
                     </li>
 
@@ -187,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </li>
             <li class="has-subnav">
                 <a href="javascript:;" style="width:100%">
-                    <i  style="padding:20px" class="fa fa-book nav_icon"></i>
+                    <i style="padding:20px" class="fa fa-book nav_icon"></i>
                     <span class="nav-text">quản lý danh mục</span>
                     <i class="icon-angle-right"></i><i class="icon-angle-down"></i>
                 </a>
@@ -218,7 +235,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </li>
         </ul>
     </nav>
-    <section class="wrapper scrollable" style="opacity: 1;">
+    <section id="main" class="wrapper scrollable" onclick="" style="opacity: 1;">
         <nav class="user-menu">
             <a href="javascript:;" class="main-menu-access">
                 <i class="icon-proton-logo"></i>
@@ -227,11 +244,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </nav>
         <section class="title-bar">
             <div class="logo">
-                <h1><a href="index.html"><img src="images/logo.png" alt="">@RenderSection("header",required:false)</a></h1>
+                <h1><a href="#">@RenderSection("header", required: false)</a></h1>
             </div>
             <div class="full-screen">
                 <section class="full-top">
-                    <button id="toggle"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+                    <button id="toggle" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></button>
                 </section>
             </div>
             <div class="w3l_search">
@@ -246,50 +263,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!--notifications of menu start -->
                         <ul class="nofitications-dropdown">
                             @*<li class="dropdown head-dpdn">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
-            <ul class="dropdown-menu anti-dropdown-menu w3l-msg">
-                <li>
-                    <div class="notification_header">
-                        <h3>You have 3 new messages</h3>
-                    </div>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="user_img"><img src="images/1.png" alt=""></div>
-                        <div class="notification_desc">
-                            <p>Lorem ipsum dolor amet</p>
-                            <p><span>1 hour ago</span></p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                </li>
-                <li class="odd">
-                    <a href="#">
-                        <div class="user_img"><img src="images/2.png" alt=""></div>
-                        <div class="notification_desc">
-                            <p>Lorem ipsum dolor amet </p>
-                            <p><span>1 hour ago</span></p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="user_img"><img src="images/3.png" alt=""></div>
-                        <div class="notification_desc">
-                            <p>Lorem ipsum dolor amet </p>
-                            <p><span>1 hour ago</span></p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </a>
-                </li>
-                <li>
-                    <div class="notification_bottom">
-                        <a href="#">See all messages</a>
-                    </div>
-                </li>
-            </ul>
-        </li>*@
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="badge">3</span></a>
+                                    <ul class="dropdown-menu anti-dropdown-menu w3l-msg">
+                                        <li>
+                                            <div class="notification_header">
+                                                <h3>You have 3 new messages</h3>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="images/1.png" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet</p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li class="odd">
+                                            <a href="#">
+                                                <div class="user_img"><img src="images/2.png" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="user_img"><img src="images/3.png" alt=""></div>
+                                                <div class="notification_desc">
+                                                    <p>Lorem ipsum dolor amet </p>
+                                                    <p><span>1 hour ago</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <div class="notification_bottom">
+                                                <a href="#">See all messages</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>*@
                             @Html.Action("GioHangPartial", "MuaHang")
 
                             <li class="dropdown head-dpdn">
@@ -400,22 +417,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </ul>
                     </div>
                     @*<div class="profile_details">
-            <ul>
-                <li class="dropdown profile_details_drop">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <div class="profile_img">
-                            <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu drp-mnu">
-                        <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-                        <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-                        <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>*@
+                            <ul>
+                                <li class="dropdown profile_details_drop">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <div class="profile_img">
+                                            <span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </a>
+                                    <ul class="dropdown-menu drp-mnu">
+                                        <li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
+                                        <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+                                        <li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>*@
                     @Html.Partial("~/Views/TaiKhoan/profieleft.cshtml")
                     <div class="clearfix"> </div>
                 </div>
@@ -425,16 +442,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="main-grid">
             @RenderBody()
             @RenderSection("Scripts", false)
+            <div class="ztb-tab-container" style="min-width: 40px;">
 
+                <div id="ztb-fbc-show-widget" class="ztb-fbc-iconic">
+                    <span class="icon-facebook-messenger-icon-01 iconic-icon"></span>
+                </div>
+
+            </div>
         </div>
+
         <!-- footer -->
         <div class="footer">
             <p>© 2016 Colored . All Rights Reserved . Design by <a href="http://w3layouts.com/">W3layouts</a></p>
         </div>
         <!-- //footer -->
     </section>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+
+        }
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+
+        }
+    </script>
     <script src="~/Content/js/bootstrap.js"></script>
+    <script async src="//static.zotabox.com/4/8/48feac53eed4113f18ed5e09ae1f55d2/widgets.js"></script>
+
     <script src="~/Content/js/proton.js"></script>
+    @Scripts.Render("~/bundles/valuedatio")
+    @RenderSection("scripts", required: false)
+
 
 
 </body>

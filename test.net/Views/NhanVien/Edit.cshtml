@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 @section header {
-   chỉnh sửa
+    chỉnh sửa
 }
 <style>
     .main-grid form .form-control {
@@ -13,7 +13,6 @@
     }
 </style>
 <h2>Edit</h2>
-<script src="~/Content/js/jquery.validate.min.js"></script>
 
 @using (Html.BeginForm())
 {
@@ -82,12 +81,12 @@
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.MaNVchinhsua, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MaNVchinhsua, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MaNVchinhsua, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.MaNVchinhsua, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaNVchinhsua, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaNVchinhsua, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             <p class="control-label col-md-2">ngày cập nhập</p>
@@ -106,6 +105,8 @@
         </div>
     </div>
 }
+
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

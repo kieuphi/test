@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -72,8 +73,28 @@ namespace test.net.Controllers
         [HttpPost] // luu tt khach hang, tao tai khoan kh
         public ActionResult Create(KhachHang item)
         {
+            item.Status = "xoa";
             KhachHangMager.insertKhachhang(item);
+            // gui mail
+            string content = System.IO.File.ReadAllText(Server.MapPath("~/Content/gmail/confim.html"));
 
+            content = content.Replace("{{TenKH}}",item.TenKH);
+            content = content.Replace("{{NgayMua}}", DateTime.Now.ToString());
+            content = content.Replace("{{id}}", item.MaKh.ToString());
+
+
+
+            var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+            new Gmail().SendMail(item.Email, "Đơn hàng mới từ asp", content);
+            new Gmail().SendMail(toEmail, "Đơn hàng mới từ asp", content);
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult confirm(int id)
+        {
+            KhachHang kh = KhachHangMager.GetKhachHangByID(id);
+            kh.Status = "trong";
+            KhachHangMager.uppdateKhachHang(kh);
             return RedirectToAction("Index");
         }
         public bool Ktdangnhap()

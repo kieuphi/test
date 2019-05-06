@@ -7,7 +7,6 @@
 @section header {
     chỉnh sửa
 }
-<script src="~/Content/js/jquery.validate.min.js"></script>
 
 <style>
     .main-grid form .form-control {
@@ -67,27 +66,7 @@
         </div>
     </div>
 }
-<script>
-    $().ready(function () {
 
-        $('.main-grid form').validate({
-            onfocusout: false,
-            onkeyup: false,
-            onclick: false,
-
-            rules: {
-                "TenDM": {
-                    required: true
-                },
-
-
-
-            }
-
-
-        })
-    })
-</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>

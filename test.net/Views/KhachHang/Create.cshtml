@@ -2,7 +2,6 @@
 @{ ViewBag.Title = "khach hang";
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
-<script src="~/Content/js/jquery.validate.min.js"></script>
 <style>
     .main-grid form .form-control {
         width: 400px;
@@ -108,7 +107,7 @@
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.Hidden("Status", "trong")
+                @*@Html.Hidden("Status", "trong")*@
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -121,48 +120,7 @@
     </div>
 }
 
-<script>
-    $().ready(function () {
 
-        $('.main-grid form').validate({
-            onfocusout: false,
-            onkeyup: false,
-            onclick: false,
-
-            rules: {
-                "TenKH": {
-                    required: true
-                },
-                "DiaChi": {
-                    required: true,
-                },
-                "Sdt": {
-                    required: true,
-                    number: true,
-                },
-                "Cmd": {
-                    number: true
-                },
-
-            },
-            messages: {
-                "TenNv": {
-                    required: "tên nhân viên chưa nhập "
-                },
-                "DiaChi": {
-                    required: "địa chỉ  nhân viên chưa nhập",
-
-                },
-                "Sdt": {
-                    required: "sdt nhân viên chưa nhập",
-                    number: "sdt phải la số",
-                },
-
-            }
-
-        })
-    })
-</script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
